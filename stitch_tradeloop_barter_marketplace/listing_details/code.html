@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CampusMarket - Product Details</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "border-subtle": "#E5E7EB",
+                    "pending-amber": "#F59E0B",
+                    "on-tertiary-container": "#ffc6b2",
+                    "tertiary-fixed": "#ffdbcf",
+                    "secondary": "#994700",
+                    "inverse-surface": "#2e3038",
+                    "on-surface-variant": "#434654",
+                    "primary": "#003d9b",
+                    "surface-variant": "#e1e2ec",
+                    "inverse-on-surface": "#f0f0fb",
+                    "on-primary-fixed-variant": "#0040a2",
+                    "surface-container-lowest": "#ffffff",
+                    "on-background": "#191b23",
+                    "surface-bright": "#faf8ff",
+                    "inverse-primary": "#b2c5ff",
+                    "on-secondary-fixed": "#321200",
+                    "on-primary": "#ffffff",
+                    "education-orange": "#FF7A00",
+                    "on-error-container": "#93000a",
+                    "surface-container-high": "#e7e7f2",
+                    "on-tertiary-fixed": "#380d00",
+                    "on-secondary-container": "#592600",
+                    "tertiary-fixed-dim": "#ffb59b",
+                    "on-primary-container": "#c4d2ff",
+                    "campus-blue": "#0052CC",
+                    "surface": "#faf8ff",
+                    "tertiary-container": "#a33500",
+                    "error": "#ba1a1a",
+                    "primary-fixed": "#dae2ff",
+                    "on-secondary-fixed-variant": "#753400",
+                    "surface-tint": "#0c56d0",
+                    "error-container": "#ffdad6",
+                    "on-secondary": "#ffffff",
+                    "primary-fixed-dim": "#b2c5ff",
+                    "outline-variant": "#c3c6d6",
+                    "background": "#faf8ff",
+                    "secondary-container": "#fb7800",
+                    "error-red": "#EF4444",
+                    "tertiary": "#7b2600",
+                    "surface-dim": "#d9d9e4",
+                    "on-tertiary": "#ffffff",
+                    "outline": "#737685",
+                    "surface-container-low": "#f3f3fd",
+                    "surface-container-highest": "#e1e2ec",
+                    "on-tertiary-fixed-variant": "#812800",
+                    "success-green": "#22C55E",
+                    "on-primary-fixed": "#001848",
+                    "secondary-fixed": "#ffdbc8",
+                    "primary-container": "#0052cc",
+                    "surface-gray": "#F8F9FA",
+                    "on-error": "#ffffff",
+                    "on-surface": "#191b23",
+                    "surface-container": "#ededf8",
+                    "secondary-fixed-dim": "#ffb68b"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "stack-sm": "0.5rem",
+                    "container-max": "1280px",
+                    "gutter-md": "1.5rem",
+                    "gutter-sm": "0.75rem",
+                    "stack-md": "1rem",
+                    "stack-xs": "0.25rem",
+                    "grid-margin": "1rem"
+            },
+            "fontFamily": {
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "title-md": ["Plus Jakarta Sans"],
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "headline-lg-mobile": ["Plus Jakarta Sans"],
+                    "display-lg": ["Plus Jakarta Sans"],
+                    "price-display": ["Plus Jakarta Sans"],
+                    "body-sm": ["Plus Jakarta Sans"],
+                    "label-md": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "title-md": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "700"}],
+                    "display-lg": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "price-display": ["20px", {"lineHeight": "24px", "fontWeight": "700"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #faf8ff;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="text-on-surface">
+<!-- TopAppBar -->
+<header class="fixed top-0 z-50 w-full bg-surface border-b border-border-subtle">
+<div class="flex justify-between items-center w-full px-grid-margin py-stack-sm max-w-container-max mx-auto">
+<div class="flex items-center gap-stack-md">
+<button class="p-2 hover:bg-surface-container-high transition-colors rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-campus-blue">menu</span>
+</button>
+<h1 class="text-headline-lg-mobile font-headline-lg-mobile text-campus-blue tracking-tight">CampusMarket</h1>
+</div>
+<div class="flex items-center gap-stack-md">
+<button class="p-2 hover:bg-surface-container-high transition-colors rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-campus-blue">shopping_cart</span>
+</button>
+</div>
+</div>
+</header>
+<main class="pt-16 pb-24 md:pt-20 max-w-container-max mx-auto px-grid-margin">
+<!-- Breadcrumbs (Desktop) -->
+<nav class="hidden md:flex items-center gap-2 py-4 text-body-sm font-body-sm text-on-surface-variant">
+<span>Home</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<span>Services</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<span class="text-campus-blue">Jollof Rice</span>
+</nav>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter-md mt-2 md:mt-0">
+<!-- Left Column: Image Gallery -->
+<section class="md:col-span-7 lg:col-span-8">
+<div class="bg-surface-container-lowest rounded-xl border border-border-subtle overflow-hidden">
+<!-- Main Image -->
+<div class="aspect-[4/3] relative group">
+<img class="w-full h-full object-cover" data-alt="A piping hot steaming plate of West African Jollof rice served in a rustic ceramic bowl. The rice is a deep vibrant orange-red color, topped with grilled chicken and fried plantains. The background is a clean, bright, modern campus dormitory setting with soft natural daylight streaming through a window. The overall aesthetic is professional food photography with high-information density, focusing on the texture of the rice and the richness of the spices." id="main-image" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDk05rBy6m-wy_T2St5gxBwC6t1QXPPYnRM5rprqcRdtSKTSzNoAKV2rQBpQk9HYPt7pmNkSKzPWOyjYQL9ZtJQ7xdpdfYdwEubm2y0GN9pNQBgVU5YmCYfWfLsp0nBs1p88sUQbWFxQt5d8iidZBXq8W-2vQKN8FKRu0sHO7K8ugiRF-N46LryA31FQ1VE5kxGj-OFPr-MCojmdSTVN8TRCCPEQ_hhg1G2-a2S3-EoPm-2PlOelNJ-usJ51iSId3eyA-mP5xjkFQY9"/>
+<div class="absolute top-4 left-4">
+<span class="bg-success-green text-white text-label-md font-label-md px-3 py-1 rounded-full">Freshly Made</span>
+</div>
+</div>
+<!-- Thumbnails -->
+<div class="flex gap-2 p-4 overflow-x-auto hide-scrollbar">
+<button class="flex-shrink-0 w-20 h-20 rounded-lg border-2 border-campus-blue overflow-hidden" onclick="updateImage(this)">
+<img class="w-full h-full object-cover" data-alt="Close up shot of spicy Jollof rice grains with visible seasoning and steam rising. High-key lighting, professional culinary presentation." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQqWaGpLU-aVAa5YCsYTvZH9ggx0lhsPFcNzIO5IA9jsYzxZdgkFnZfVr2_o65V9czodu52M4gpNbpDGeu-M0paWRbDrE2AD2VDNAwsG_kuYkSK9pNltRZ8R3rv5qkN5a2Y3YlM2m9LSUaratPS4eDPemsBGOpbcnmmEShMt3WpcgzpJTmUU8c82nzeaz_U_L-GnYTPBukkZPpmi5wnS7pzj3z8aoIZUz1oxWrcJRRVPnbKF2e57NPX5gRYJosmvanCb74r6KOTZu0"/>
+</button>
+<button class="flex-shrink-0 w-20 h-20 rounded-lg border border-border-subtle hover:border-campus-blue transition-colors overflow-hidden" onclick="updateImage(this)">
+<img class="w-full h-full object-cover" data-alt="Side view of a Jollof rice meal set including a cold drink and cutlery on a clean white table. Energetic, utilitarian campus vibes." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfZIlsBZc6YKtWazWO1lHmI-EqqWPtT7udLPFfnxRuAhw5jrxSdH79N418mgN3-StvGC2lKqkik3c0PuE7d3ifl61iYjq_SMgplXQ5gQKXpL3WppG52RZdmPI_BjJUmBLrTFbizP5VGsDkZBG4l3YMD-hbXFJ2piCh8ckaGx_plMh4WASIPWpTak4SoX471X4Cc1uyExZnnsXsBI2fHusaGLe-d88aoaybbNziS26jNkryz8jkB8pD28pPPYp5JepZQee9rzlCu86s"/>
+</button>
+<button class="flex-shrink-0 w-20 h-20 rounded-lg border border-border-subtle hover:border-campus-blue transition-colors overflow-hidden" onclick="updateImage(this)">
+<img class="w-full h-full object-cover" data-alt="Detail shot of the grilled chicken accompaniment with char marks and glaze. Vibrant lighting, high-contrast, professional food photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCI69y2f0GENKhlqqafPnpgDskfLvgbeAd_4xX2QdMWpkQZSPEW9l8cYoXi5sVEFVSuR07Gazd6Ebjy2yLlNFKjayEZAQBouEvfPlvp_u1nE2maH863jaQnTLoQh7NevJNJkmi7GLvFMhZWynlj7DwOofF9W3FToTq1lly-cRMyRTIC_dylKWljIcEA9B-a4IvgE67ZN5UA9I3PnNcae-dNqRYnmvzBdQvl6mPMjGjc7FGl4VnGxn-yFVooYBszDjTjUr4jVeaHu7zQ"/>
+</button>
+</div>
+</div>
+<!-- Description Card -->
+<div class="mt-gutter-md bg-surface-container-lowest rounded-xl border border-border-subtle p-6">
+<h2 class="text-headline-lg font-headline-lg text-on-surface mb-4">Product Description</h2>
+<div class="space-y-4 text-body-lg font-body-lg text-on-surface-variant">
+<p>Authentic Nigerian Jollof Rice made with premium parboiled rice and a rich tomato-pepper base. Perfectly seasoned for that classic party taste. Served right outside the Boys Hostel entrance every evening.</p>
+<ul class="list-disc pl-5 space-y-2">
+<li>Includes 2 pieces of spicy grilled chicken</li>
+<li>Side of sweet fried plantains (dodo)</li>
+<li>Optional coleslaw or moin-moin</li>
+<li>Ready within 10-15 minutes of ordering</li>
+</ul>
+</div>
+</div>
+</section>
+<!-- Right Column: Info & Action -->
+<section class="md:col-span-5 lg:col-span-4 space-y-gutter-md">
+<!-- Title & Price Card -->
+<div class="bg-surface-container-lowest rounded-xl border border-border-subtle p-6">
+<div class="flex justify-between items-start mb-2">
+<h1 class="text-headline-lg font-headline-lg text-on-surface leading-tight">Jollof near boys hostel</h1>
+<button class="text-outline hover:text-error-red transition-colors">
+<span class="material-symbols-outlined">favorite</span>
+</button>
+</div>
+<div class="flex items-center gap-2 mb-4">
+<div class="flex text-pending-amber">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]">star</span>
+</div>
+<span class="text-label-md font-label-md text-on-surface-variant">(24 Ratings)</span>
+</div>
+<div class="py-4 border-y border-border-subtle my-4">
+<span class="text-display-lg font-display-lg text-campus-blue">₦2,500</span>
+<span class="text-body-sm font-body-sm text-on-surface-variant ml-2">per plate</span>
+</div>
+<div class="flex flex-col gap-3">
+<button class="w-full bg-campus-blue text-white py-4 rounded-xl font-title-md text-title-md flex items-center justify-center gap-2 active:scale-95 transition-all shadow-md">
+<span class="material-symbols-outlined">chat</span>
+                            Order on WhatsApp
+                        </button>
+<button class="w-full border border-campus-blue text-campus-blue py-4 rounded-xl font-title-md text-title-md flex items-center justify-center gap-2 active:scale-95 transition-all">
+<span class="material-symbols-outlined">call</span>
+                            Call Seller
+                        </button>
+</div>
+</div>
+<!-- Seller Info Card -->
+<div class="bg-surface-container-lowest rounded-xl border border-border-subtle p-6">
+<h3 class="text-label-md font-label-md text-on-surface-variant uppercase tracking-wider mb-4">Seller Information</h3>
+<div class="flex items-center gap-4 mb-4">
+<div class="w-14 h-14 rounded-full bg-primary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-3xl">person</span>
+</div>
+<div>
+<p class="text-title-md font-title-md text-on-surface">Tunde Adebayo</p>
+<p class="text-body-sm font-body-sm text-on-surface-variant">400L Mechanical Engineering</p>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4 py-4 border-t border-border-subtle">
+<div>
+<p class="text-label-md font-label-md text-on-surface-variant">Response Time</p>
+<p class="text-body-sm font-body-sm font-bold">~15 mins</p>
+</div>
+<div>
+<p class="text-label-md font-label-md text-on-surface-variant">Joined</p>
+<p class="text-body-sm font-body-sm font-bold">Sept 2023</p>
+</div>
+</div>
+<button class="w-full text-campus-blue text-body-sm font-body-sm hover:underline mt-2">View Seller Store</button>
+</div>
+<!-- Location Preview -->
+<div class="bg-surface-container-lowest rounded-xl border border-border-subtle p-6">
+<h3 class="text-label-md font-label-md text-on-surface-variant uppercase tracking-wider mb-4">Delivery &amp; Pickup</h3>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-campus-blue">location_on</span>
+<div>
+<p class="text-body-lg font-body-lg font-bold">Boys Hostel Entrance</p>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Pickup available daily 6 PM - 10 PM</p>
+</div>
+</div>
+<div class="mt-4 rounded-lg overflow-hidden h-32 relative">
+<img class="w-full h-full object-cover grayscale opacity-50" data-alt="A stylized aerial map view of a university campus layout, specifically focusing on residential hostel blocks. The map uses a minimalist aesthetic with Campus Blue accents for points of interest. The design is utilitarian and organized, fitting the corporate modern marketplace style." data-location="University Campus Boys Hostel" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFwEuLC39196akdqT3NsBOzHUq0uUdNzpOE9M_wLaz51__rPE4BUjxOqnt3CGjkWwjinqcD10DKpP0wG1HXL4MZMsU5InAQrjPKx8zs2Dvr0gqi08gaqd2wIT1_JN3mQhMCb5ucEO85sQLo9P4wVwmup4UgyG2dcRzZNRIIoHFhrAf7F2uQTHBO3B-r9J3IcywGkxZpE0Ff5WoB7wK-lqgho2NxVOfQBKfsTt9BJUAB43MKAZUmLHOjpSX2MuPljOkT72lYpCx0oUl"/>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="bg-campus-blue text-white p-2 rounded-full shadow-lg">
+<span class="material-symbols-outlined">push_pin</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center bg-surface border-t border-border-subtle px-gutter-sm py-2 md:hidden">
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-label-md font-label-md">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-campus-blue bg-primary-fixed rounded-full px-4 py-1" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">storefront</span>
+<span class="text-label-md font-label-md">Services</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">add_box</span>
+<span class="text-label-md font-label-md">Post</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-label-md font-label-md">Account</span>
+</a>
+</nav>
+<script>
+        function updateImage(button) {
+            const mainImg = document.getElementById('main-image');
+            const thumbImg = button.querySelector('img');
+            
+            // Swap source and alt
+            const tempSrc = mainImg.src;
+            const tempAlt = mainImg.getAttribute('data-alt');
+            
+            mainImg.src = thumbImg.src;
+            mainImg.setAttribute('data-alt', thumbImg.getAttribute('data-alt'));
+            
+            // Update active state of thumbnails
+            document.querySelectorAll('button.border-2.border-campus-blue').forEach(btn => {
+                btn.classList.remove('border-2', 'border-campus-blue');
+                btn.classList.add('border', 'border-border-subtle');
+            });
+            button.classList.add('border-2', 'border-campus-blue');
+            button.classList.remove('border', 'border-border-subtle');
+            
+            // Animation effect
+            mainImg.classList.add('opacity-0');
+            setTimeout(() => {
+                mainImg.classList.remove('opacity-0');
+                mainImg.classList.add('transition-opacity', 'duration-300');
+            }, 50);
+        }
+
+        // WhatsApp action micro-interaction
+        document.querySelector('button.bg-campus-blue').addEventListener('click', function() {
+            this.innerHTML = '<span class="material-symbols-outlined animate-spin">sync</span> Connecting...';
+            setTimeout(() => {
+                this.innerHTML = '<span class="material-symbols-outlined">check_circle</span> Redirecting...';
+                // In a real app: window.location.href = "https://wa.me/..."
+            }, 1000);
+        });
+    </script>
+</body></html>

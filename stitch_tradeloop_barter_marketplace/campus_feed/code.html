@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CampusMarket | Student Feed</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "border-subtle": "#E5E7EB",
+                        "pending-amber": "#F59E0B",
+                        "on-tertiary-container": "#ffc6b2",
+                        "tertiary-fixed": "#ffdbcf",
+                        "secondary": "#994700",
+                        "inverse-surface": "#2e3038",
+                        "on-surface-variant": "#434654",
+                        "primary": "#003d9b",
+                        "surface-variant": "#e1e2ec",
+                        "inverse-on-surface": "#f0f0fb",
+                        "on-primary-fixed-variant": "#0040a2",
+                        "surface-container-lowest": "#ffffff",
+                        "on-background": "#191b23",
+                        "surface-bright": "#faf8ff",
+                        "inverse-primary": "#b2c5ff",
+                        "on-secondary-fixed": "#321200",
+                        "on-primary": "#ffffff",
+                        "education-orange": "#FF7A00",
+                        "on-error-container": "#93000a",
+                        "surface-container-high": "#e7e7f2",
+                        "on-tertiary-fixed": "#380d00",
+                        "on-secondary-container": "#592600",
+                        "tertiary-fixed-dim": "#ffb59b",
+                        "on-primary-container": "#c4d2ff",
+                        "campus-blue": "#0052CC",
+                        "surface": "#faf8ff",
+                        "tertiary-container": "#a33500",
+                        "error": "#ba1a1a",
+                        "primary-fixed": "#dae2ff",
+                        "on-secondary-fixed-variant": "#753400",
+                        "surface-tint": "#0c56d0",
+                        "error-container": "#ffdad6",
+                        "on-secondary": "#ffffff",
+                        "primary-fixed-dim": "#b2c5ff",
+                        "outline-variant": "#c3c6d6",
+                        "background": "#faf8ff",
+                        "secondary-container": "#fb7800",
+                        "error-red": "#EF4444",
+                        "tertiary": "#7b2600",
+                        "surface-dim": "#d9d9e4",
+                        "on-tertiary": "#ffffff",
+                        "outline": "#737685",
+                        "surface-container-low": "#f3f3fd",
+                        "surface-container-highest": "#e1e2ec",
+                        "on-tertiary-fixed-variant": "#812800",
+                        "success-green": "#22C55E",
+                        "on-primary-fixed": "#001848",
+                        "secondary-fixed": "#ffdbc8",
+                        "primary-container": "#0052cc",
+                        "surface-gray": "#F8F9FA",
+                        "on-error": "#ffffff",
+                        "on-surface": "#191b23",
+                        "surface-container": "#ededf8",
+                        "secondary-fixed-dim": "#ffb68b"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "stack-sm": "0.5rem",
+                        "container-max": "1280px",
+                        "gutter-md": "1.5rem",
+                        "gutter-sm": "0.75rem",
+                        "stack-md": "1rem",
+                        "stack-xs": "0.25rem",
+                        "grid-margin": "1rem"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "title-md": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "price-display": ["Plus Jakarta Sans"],
+                        "body-sm": ["Plus Jakarta Sans"],
+                        "label-md": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "title-md": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                        "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "700"}],
+                        "display-lg": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "price-display": ["20px", {"lineHeight": "24px", "fontWeight": "700"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-lg min-h-screen pb-20">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-inverse-surface border-b border-border-subtle dark:border-outline-variant sticky top-0 z-50">
+<div class="flex justify-between items-center w-full px-grid-margin py-stack-sm max-w-container-max mx-auto">
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-campus-blue hover:bg-surface-container-high p-2 rounded-full transition-colors active:scale-95 duration-100" data-icon="menu">menu</button>
+<h1 class="text-headline-lg-mobile font-headline-lg-mobile text-campus-blue dark:text-inverse-primary tracking-tight">CampusMarket</h1>
+</div>
+<!-- Desktop Search Bar -->
+<div class="hidden md:flex flex-1 max-w-xl mx-8 relative">
+<input class="w-full bg-surface-gray border border-border-subtle rounded-xl py-2 pl-4 pr-12 focus:ring-2 focus:ring-campus-blue focus:outline-none transition-all" placeholder="Search for textbooks, tech, or styling..." type="text"/>
+<button class="absolute right-2 top-1/2 -translate-y-1/2 bg-campus-blue text-white p-1.5 rounded-lg">
+<span class="material-symbols-outlined text-sm" data-icon="search">search</span>
+</button>
+</div>
+<div class="flex items-center gap-2">
+<button class="material-symbols-outlined text-campus-blue hover:bg-surface-container-high p-2 rounded-full transition-colors active:scale-95 duration-100" data-icon="shopping_cart">shopping_cart</button>
+</div>
+</div>
+<!-- Mobile Search Bar -->
+<div class="md:hidden px-grid-margin pb-stack-sm">
+<div class="relative">
+<input class="w-full bg-surface-gray border border-border-subtle rounded-xl py-2 pl-4 pr-10 focus:ring-2 focus:ring-campus-blue focus:outline-none" placeholder="Search for items..." type="text"/>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-outline" data-icon="search">search</span>
+</div>
+</div>
+</header>
+<main class="max-w-container-max mx-auto px-grid-margin">
+<!-- Category Scroll -->
+<section class="py-stack-md overflow-x-auto hide-scrollbar flex gap-3 -mx-grid-margin px-grid-margin">
+<button class="flex items-center gap-2 px-4 py-2 bg-campus-blue text-white rounded-full whitespace-nowrap active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-lg" data-icon="dashboard">dashboard</span>
+<span class="text-label-md font-label-md">All Feed</span>
+</button>
+<button class="flex items-center gap-2 px-4 py-2 bg-surface-gray border border-border-subtle rounded-full whitespace-nowrap hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-lg" data-icon="restaurant">restaurant</span>
+<span class="text-label-md font-label-md">Food</span>
+</button>
+<button class="flex items-center gap-2 px-4 py-2 bg-surface-gray border border-border-subtle rounded-full whitespace-nowrap hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-lg" data-icon="apparel">apparel</span>
+<span class="text-label-md font-label-md">Fashion</span>
+</button>
+<button class="flex items-center gap-2 px-4 py-2 bg-surface-gray border border-border-subtle rounded-full whitespace-nowrap hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-lg" data-icon="devices">devices</span>
+<span class="text-label-md font-label-md">Tech</span>
+</button>
+<button class="flex items-center gap-2 px-4 py-2 bg-surface-gray border border-border-subtle rounded-full whitespace-nowrap hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-lg" data-icon="menu_book">menu_book</span>
+<span class="text-label-md font-label-md">Academic</span>
+</button>
+<button class="flex items-center gap-2 px-4 py-2 bg-surface-gray border border-border-subtle rounded-full whitespace-nowrap hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-lg" data-icon="cleaning_services">cleaning_services</span>
+<span class="text-label-md font-label-md">Services</span>
+</button>
+<button class="flex items-center gap-2 px-4 py-2 bg-surface-gray border border-border-subtle rounded-full whitespace-nowrap hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-lg" data-icon="bedroom_parent">bedroom_parent</span>
+<span class="text-label-md font-label-md">Hostel Essentials</span>
+</button>
+</section>
+<!-- Freshly Baked Section (Banner) -->
+<section class="relative h-48 md:h-64 rounded-xl overflow-hidden mb-8">
+<img alt="Campus Trade Banner" class="w-full h-full object-cover" data-alt="A diverse group of university students collaborating on a colorful campus terrace, with laptops and textbooks scattered on tables. The atmosphere is sunny and vibrant, featuring a bright, high-key lighting style. The color palette includes pops of Campus Blue and Education Orange against modern white architecture. The mood is energetic, focused on student life and peer-to-peer productivity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAyAY64P4sDLzpLFid9_hg6UncGeIuAYVoVbAG_NrkHYmaPcPtAKOiLvsHS7tnMajy2mAsC3WDdwHA6yYBw97Yg9GQo_s7zjcWfl4eYkzYmHwjMSvFTy-p_hMeO79C87e2gy95H-pDsFT9hZmizfHUY0m0hNFTEdAVG2lgbczTnJGBHpP3-Ue6XFqAblyNSneacDySTbketjW7CTp8kCfGq5NlzMg2zl1CW5Tj3qBFiW1bvHtYQ8F53tMEQEbxVi0ClIYvTuMX41VOm"/>
+<div class="absolute inset-0 bg-gradient-to-r from-campus-blue/80 to-transparent flex flex-col justify-center px-8">
+<span class="bg-education-orange text-white text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider w-fit mb-2">Freshly Baked</span>
+<h2 class="text-white text-display-lg font-display-lg max-w-sm">New Arrivals from Engineering Block</h2>
+<p class="text-white/90 text-body-sm mt-2">50+ New Items posted in the last hour</p>
+</div>
+</section>
+<!-- Product Grid -->
+<section class="mb-12">
+<div class="flex justify-between items-end mb-4">
+<div>
+<h3 class="text-title-md font-title-md">Recommended for You</h3>
+<p class="text-body-sm text-outline">Based on your browsing history</p>
+</div>
+<a class="text-campus-blue font-label-md flex items-center gap-1" href="#">View all <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span></a>
+</div>
+<!-- 2-column mobile, 3-column tablet, 6-column desktop grid -->
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-3">
+<!-- Product Card 1 -->
+<div class="bg-white border border-border-subtle rounded-lg overflow-hidden flex flex-col hover:shadow-sm transition-shadow group">
+<div class="relative aspect-[4/3]">
+<img alt="Red Sneakers" class="w-full h-full object-cover" data-alt="A close-up shot of a pristine pair of vibrant red athletic sneakers placed on a white marble surface. The lighting is bright and commercial, emphasizing the texture and design of the footwear. The aesthetic is clean and modern, using high contrast to make the product stand out. Soft diffused shadows anchor the shoes in a professional studio setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCF01KDF5JDaU_Omg3x5wf6R3ahCXc2EEINg-PuOE48w1YhXpQ-1MSddy7FO-61tjc7z7GO_RB1jNbt-gJykSrvbhnKr86gtmao70hl9THgXAHeqBRYsvPpHufXs6TGQa0-UQRGnusjhw_CxojfD4cQywtZYczy0-7OYq0rS_w7ZlAvIohijwXvLWvOzG1oE6XlMACryuYqR9jzCAcV6MY3qDUFc-BqWe0hHScak-Dv7K6QJDA1N39MVoYlXXbNVOlUXUfNhrASu1pK"/>
+<span class="absolute top-2 left-2 bg-success-green text-white text-[10px] font-bold px-1.5 py-0.5 rounded">Like New</span>
+</div>
+<div class="p-3 flex flex-col flex-1">
+<h4 class="text-body-sm font-bold line-clamp-2 mb-1 group-hover:text-campus-blue">Nike Air Max Red - Limited Edition</h4>
+<div class="flex items-center gap-1 mb-2">
+<span class="material-symbols-outlined text-pending-amber text-xs fill" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-[10px] font-bold">4.8</span>
+<span class="text-[10px] text-outline">(12 sales)</span>
+</div>
+<div class="mt-auto">
+<p class="text-price-display font-price-display text-campus-blue mb-2">₦25,000</p>
+<button class="w-full bg-campus-blue text-white py-1.5 rounded-lg text-label-md font-label-md flex items-center justify-center gap-1 hover:bg-on-primary-fixed-variant active:scale-95 transition-all">
+<span class="material-symbols-outlined text-sm" data-icon="chat">chat</span>
+                                Contact
+                            </button>
+</div>
+</div>
+</div>
+<!-- Product Card 2 -->
+<div class="bg-white border border-border-subtle rounded-lg overflow-hidden flex flex-col hover:shadow-sm transition-shadow group">
+<div class="relative aspect-[4/3]">
+<img alt="iPhone 13" class="w-full h-full object-cover" data-alt="A sleek modern smartphone resting on a minimalist desk next to a cup of black coffee and a notebook. The lighting is soft and natural, coming from a nearby window, creating a calm academic morning vibe. The color palette is dominated by whites, grays, and the deep blue of the phone case. The image evokes a sense of high-tech utility and organized student life." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXkKrOfrWjHnHl9i8F4Co88tsyXUITcSHvWOPuNoiWHQXESDckcXbDE8zseKL5AuzUY6Hz2sxaAYFQunKI2ZLzohs7CbIbLbcyImkXcwLAYFQGdIsFovJKN3dvkcaItwlv9xtEYPuTI5eXtyZGRhHTCut32P9ioKp0EwIKrkXXgehnXKJhJqg-zsAB-k6vXcEvgjQxx64pOduqSYa8U3g-88doTW_3athNnyTn-Q7TBglP38vuSN6WEgY9DivLGF1qw548KWltnuqH"/>
+<span class="absolute top-2 left-2 bg-pending-amber text-white text-[10px] font-bold px-1.5 py-0.5 rounded">Used - Good</span>
+</div>
+<div class="p-3 flex flex-col flex-1">
+<h4 class="text-body-sm font-bold line-clamp-2 mb-1 group-hover:text-campus-blue">iPhone 13 128GB - Graphite Gray</h4>
+<div class="flex items-center gap-1 mb-2">
+<span class="material-symbols-outlined text-pending-amber text-xs fill" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-[10px] font-bold">5.0</span>
+<span class="text-[10px] text-outline">(5 sales)</span>
+</div>
+<div class="mt-auto">
+<p class="text-price-display font-price-display text-campus-blue mb-2">₦320,000</p>
+<button class="w-full bg-campus-blue text-white py-1.5 rounded-lg text-label-md font-label-md flex items-center justify-center gap-1 hover:bg-on-primary-fixed-variant active:scale-95 transition-all">
+<span class="material-symbols-outlined text-sm" data-icon="chat">chat</span>
+                                Contact
+                            </button>
+</div>
+</div>
+</div>
+<!-- Service Card 1 -->
+<div class="bg-surface-container-low border border-border-subtle rounded-lg overflow-hidden flex flex-col hover:shadow-sm transition-shadow group">
+<div class="relative aspect-[4/3]">
+<img alt="Graphic Design" class="w-full h-full object-cover" data-alt="A professional graphic designer's workspace featuring a large monitor displaying a colorful logo design project. The room is softly lit with warm ambient light, contrasting with the bright glow of the screen. High-end design tools like a tablet and stylus are visible on the desk. The overall style is clean and professional, representing high-quality creative service delivery in a modern studio environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBNI_ANleKMLchtWVgXuirSPGq9-Ue51mtWihkcHj0X4twScxqQq6anKVLbmGjqQOJ5T1WdNpr6udeERsYluajmjUbQRGJHqXhZHnZXhmHMQrr65Dijf0YsnHusKCCHPzKq8k-wrDS9Vse9YJbZkXm1le8EKwSXUBRABdOPprFK3elK2YYFRyaavlyQ_LRd4ejoGp_Y6JRmAXkZRQlFAOBbPfn1eyo_Us98o1Zvw5LAnkd69bVo3_NM83RJJudVkflW4cLOKxu0zcN"/>
+<span class="absolute top-2 right-2 bg-campus-blue text-white text-[10px] font-bold px-2 py-1 rounded-full uppercase">Service</span>
+</div>
+<div class="p-3 flex flex-col flex-1">
+<h4 class="text-body-sm font-bold line-clamp-1 mb-1 group-hover:text-campus-blue">Professional Logo &amp; UI Design</h4>
+<p class="text-[10px] text-outline mb-2">Delivery: 48 Hours</p>
+<div class="flex items-center gap-1 mb-2">
+<span class="material-symbols-outlined text-pending-amber text-xs fill" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-[10px] font-bold">4.9</span>
+<span class="text-[10px] text-outline">(42 reviews)</span>
+</div>
+<div class="mt-auto">
+<p class="text-price-display font-price-display text-campus-blue mb-2">From ₦5,000</p>
+<button class="w-full border border-campus-blue text-campus-blue py-1.5 rounded-lg text-label-md font-label-md flex items-center justify-center gap-1 hover:bg-campus-blue hover:text-white transition-all">
+<span class="material-symbols-outlined text-sm" data-icon="message">message</span>
+                                Book Service
+                            </button>
+</div>
+</div>
+</div>
+<!-- Product Card 3 -->
+<div class="bg-white border border-border-subtle rounded-lg overflow-hidden flex flex-col hover:shadow-sm transition-shadow group">
+<div class="relative aspect-[4/3]">
+<img alt="Textbooks" class="w-full h-full object-cover" data-alt="A stack of heavy engineering and medical textbooks on a library table, with a pair of reading glasses resting on top. The background is a blurred library with wooden shelves, creating a scholarly and academic atmosphere. The lighting is warm and studious, highlighting the worn spines of the books. The scene communicates trust and the transfer of knowledge within a campus community." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhxL8xlKP3HFJvsZGJVURvROBl5XXTtf3NOnRcDWHLkuLS2jvNgW9Y4JecL7dqkd7VwtY8sspWJPSl4XJ9-Y3dxIagLES8ATtLSljmecrQ_1yXBqUk1-DFOrQEY_wi97eYLCJdm5ahkFzmuwmQdooTOb-xKS-mpnnkWGHBbW_QbVuJzuqzlmDIUJy1ZN0FR5KaTAfloZUgi80ATmYwXHC0x4tyZCK-8ze2woaKwGAJdIsjG9lDlkF40XNc6skBY24TwZehROoEUx3K"/>
+<span class="absolute top-2 left-2 bg-success-green text-white text-[10px] font-bold px-1.5 py-0.5 rounded">New</span>
+</div>
+<div class="p-3 flex flex-col flex-1">
+<h4 class="text-body-sm font-bold line-clamp-2 mb-1 group-hover:text-campus-blue">Engineering Mathematics Vol 1 &amp; 2</h4>
+<div class="flex items-center gap-1 mb-2">
+<span class="material-symbols-outlined text-outline text-xs" data-icon="star">star</span>
+<span class="text-[10px] font-bold">New Seller</span>
+</div>
+<div class="mt-auto">
+<p class="text-price-display font-price-display text-campus-blue mb-2">₦12,500</p>
+<button class="w-full bg-campus-blue text-white py-1.5 rounded-lg text-label-md font-label-md flex items-center justify-center gap-1 hover:bg-on-primary-fixed-variant active:scale-95 transition-all">
+<span class="material-symbols-outlined text-sm" data-icon="chat">chat</span>
+                                Contact
+                            </button>
+</div>
+</div>
+</div>
+<!-- Product Card 4 -->
+<div class="bg-white border border-border-subtle rounded-lg overflow-hidden flex flex-col hover:shadow-sm transition-shadow group">
+<div class="relative aspect-[4/3]">
+<img alt="Desk Lamp" class="w-full h-full object-cover" data-alt="A clean, white ceramic table lamp and a sleek desk organizer on a minimalist dormitory desk. The surrounding space is tidy and modern, reflecting a well-organized student hostel room. The lighting is bright and airy, using a white and soft gray palette to convey a sense of calm and order. The image highlights high-quality hostel essentials for a professional student living environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkxyqg2Dfv7dImMXsZbL9kMNF6LVOGYy_d3OZjAerTiz8kQuY5UQAYfo42lBMWuR-XiRReXs6QY3JFIGPjWV5iPDVGSgHnZchajNyb4LlpuGFBVRtwgQ9-OA7-CsbgK5HpbJ6RvNV7IkTC7NVEWm_GAC6yUWb2GCOwWaBjHvuB6JX_AtPJ5p_FpvKGAwEsCzLtfnnBAf9LG6QgXztY8RuHayl8_7UT5Hm2Rc2WML-zaipumZ2WaxXhdQo_DuYQ_1omQFb2iZH9DtwJ"/>
+<span class="absolute top-2 left-2 bg-pending-amber text-white text-[10px] font-bold px-1.5 py-0.5 rounded">Used - Like New</span>
+</div>
+<div class="p-3 flex flex-col flex-1">
+<h4 class="text-body-sm font-bold line-clamp-2 mb-1 group-hover:text-campus-blue">Minimalist LED Desk Lamp with USB</h4>
+<div class="flex items-center gap-1 mb-2">
+<span class="material-symbols-outlined text-pending-amber text-xs fill" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-[10px] font-bold">4.5</span>
+<span class="text-[10px] text-outline">(8 sales)</span>
+</div>
+<div class="mt-auto">
+<p class="text-price-display font-price-display text-campus-blue mb-2">₦8,000</p>
+<button class="w-full bg-campus-blue text-white py-1.5 rounded-lg text-label-md font-label-md flex items-center justify-center gap-1 hover:bg-on-primary-fixed-variant active:scale-95 transition-all">
+<span class="material-symbols-outlined text-sm" data-icon="chat">chat</span>
+                                Contact
+                            </button>
+</div>
+</div>
+</div>
+<!-- Service Card 2 -->
+<div class="bg-surface-container-low border border-border-subtle rounded-lg overflow-hidden flex flex-col hover:shadow-sm transition-shadow group">
+<div class="relative aspect-[4/3]">
+<img alt="Hair Styling" class="w-full h-full object-cover" data-alt="A detailed view of a hair styling session in a brightly lit, modern salon setting. The stylist's hands are carefully arranging long, dark braided hair using professional tools. The lighting is crisp and clear, highlighting the intricate detail of the hairstyle. The scene is clean and professional, using a neutral color palette with gold accents to suggest a premium student service experience." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAaKKZfmpXL4xQc01xujzp0Lni1wUDPe7dHm9fgh2weuCxt75o3CPKdN1C94oW0gA57wQF_YVJz70ToB4A3uNh3DIcQZFBX5XDnTmbl_eIA155hpDpU4_yaVIYemK6ehfWRK5iHyb2xBPd4eUL7aDTZrM2u7f26EAF3noDQiDsX0gsJuyLPGIicZ7xcs4I7OsdrZ1PrN9PJP7nrBUc_EzcdpiZUGvXt0OcGEpAJHFXdJucYs5Z4GRXGE1vxzEd2brkqe2gGtOKWkkTv"/>
+<span class="absolute top-2 right-2 bg-campus-blue text-white text-[10px] font-bold px-2 py-1 rounded-full uppercase">Service</span>
+</div>
+<div class="p-3 flex flex-col flex-1">
+<h4 class="text-body-sm font-bold line-clamp-1 mb-1 group-hover:text-campus-blue">Campus Glam - Braids &amp; Styling</h4>
+<p class="text-[10px] text-outline mb-2">Location: Hall A Common Room</p>
+<div class="flex items-center gap-1 mb-2">
+<span class="material-symbols-outlined text-pending-amber text-xs fill" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-[10px] font-bold">5.0</span>
+<span class="text-[10px] text-outline">(15 reviews)</span>
+</div>
+<div class="mt-auto">
+<p class="text-price-display font-price-display text-campus-blue mb-2">From ₦3,500</p>
+<button class="w-full border border-campus-blue text-campus-blue py-1.5 rounded-lg text-label-md font-label-md flex items-center justify-center gap-1 hover:bg-campus-blue hover:text-white transition-all">
+<span class="material-symbols-outlined text-sm" data-icon="message">message</span>
+                                Book Service
+                            </button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Campus Trades (Bento-style section) -->
+<section class="mb-12">
+<h3 class="text-title-md font-title-md mb-4">Trade &amp; Swaps</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<div class="md:col-span-2 bg-gradient-to-br from-tertiary-container to-secondary p-6 rounded-2xl text-white relative overflow-hidden">
+<div class="relative z-10">
+<span class="text-label-md font-label-md opacity-80 uppercase tracking-widest">Trade of the Day</span>
+<h4 class="text-display-lg font-display-lg mt-2">Swap: iPad Air 4 for MacBook Air</h4>
+<p class="text-body-sm mt-4 max-w-md">Looking for a laptop for coding projects. iPad is 1 year old, includes Apple Pencil. DM for meeting at Senate Building.</p>
+<button class="mt-6 bg-white text-secondary px-6 py-2 rounded-full font-bold text-label-md hover:bg-opacity-90 active:scale-95 transition-all">Make an Offer</button>
+</div>
+<span class="material-symbols-outlined absolute -right-4 -bottom-4 text-[120px] opacity-10 rotate-12" data-icon="swap_horiz">swap_horiz</span>
+</div>
+<div class="bg-primary-container p-6 rounded-2xl text-white flex flex-col justify-between">
+<div>
+<h4 class="text-title-md font-title-md">Meal Swaps</h4>
+<p class="text-body-sm opacity-80 mt-1">Don't like today's menu? Swap your ticket.</p>
+</div>
+<div class="mt-4 flex -space-x-2">
+<img alt="Avatar" class="w-8 h-8 rounded-full border-2 border-primary-container" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwVmkKpEvhFbbBrixa85BaoT-tCTW4ti7J6JJN8Ah_riLRzbgMWNRiz9xwe8fC1V_cvxPGRaGWiw92GxrvXcwmvbDRHSo1-i3oM9zt4heA1ZV9Iv6Zv5r8I5Z2kVTo2OSaUGzVvwZCRThe2OCNFk1PdwYPIi3NsqYkTx3fSOBNjjcVERZoSbFmbcK8gEMpVBhBnom2q2RsUvmZgVii06IAnHYd901q3YyKJdxfvzOrSXM9u-93j-nGCsLWgEGLTbJBWYsVk1aZHF7F"/>
+<img alt="Avatar" class="w-8 h-8 rounded-full border-2 border-primary-container" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBViF9jbqC3Sc7WPKNrd9e9gLO5ycTkNM5qOinisiC9Q_mZfp4m8t4QWk8D6URMNkN8W6FPjkQwLRyEkSpTeIQcbCHnq3-Womzar2rlI5rdb9cB1yhIFQKxSfl4B5ytgOQsRJRRydX5vVHu52AgJNsSO4VZsOgyVEBB3Uqg6aFMaOQe111wKxHJ1OxubwcmeH4auOsLUuRvTbhY9uislhwS38LPspUxeuP_8ilQ0VCpxnn8WoIPYAjZWIHOiRdrRvq9760zNH98uUG4"/>
+<img alt="Avatar" class="w-8 h-8 rounded-full border-2 border-primary-container" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBluZAWytx3H6J52ZvrkY5e40gGg_DxDs4CFxBCLV84fdF6jropVXJsqQTOnF-ZaXT5WoO-pOyrLu3i7_6GZOeMKQD392ppNKU53mHciX-tq-w3VabG8e6SvN8mv8cYftK3wdTxskdMRNKLOl4HFP7HTSdc9ZWQhWmlB_2Ps2dRiemHl74jrah9vZqJN15VHq6wbjBHgNaLoiDrwj9pU14RiRCX3Qx1rQ7QOZCH8RKoDrCyXoHtGOXErfWcDuhD6UMqb3-_-sQ6s8Nt"/>
+<div class="w-8 h-8 rounded-full border-2 border-primary-container bg-white/20 flex items-center justify-center text-[10px] font-bold">+12</div>
+</div>
+<button class="mt-4 w-full bg-white/20 hover:bg-white/30 py-2 rounded-xl text-label-md font-bold transition-colors">View Swaps</button>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center bg-surface dark:bg-inverse-surface px-gutter-sm py-2 border-t border-border-subtle dark:border-outline-variant shadow-lg dark:shadow-none">
+<a class="flex flex-col items-center justify-center text-campus-blue dark:text-inverse-primary bg-primary-fixed dark:bg-primary-fixed-variant rounded-full px-4 py-1 transform scale-90 duration-200" href="#">
+<span class="material-symbols-outlined fill" data-icon="home" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="text-label-md font-label-md">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant hover:text-campus-blue dark:hover:text-inverse-primary transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="storefront">storefront</span>
+<span class="text-label-md font-label-md">Services</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant hover:text-campus-blue dark:hover:text-inverse-primary transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="add_box">add_box</span>
+<span class="text-label-md font-label-md">Post</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant hover:text-campus-blue dark:hover:text-inverse-primary transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="text-label-md font-label-md">Account</span>
+</a>
+</nav>
+<!-- Floating Action Button for Posting (Contextual) -->
+<button class="fixed right-6 bottom-20 bg-education-orange text-white w-14 h-14 rounded-full shadow-xl flex items-center justify-center hover:scale-110 active:scale-90 transition-all z-40">
+<span class="material-symbols-outlined text-3xl" data-icon="add">add</span>
+</button>
+<script>
+        // Micro-interactions and scroll effects
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('click', function() {
+                this.classList.add('scale-95');
+                setTimeout(() => this.classList.remove('scale-95'), 100);
+            });
+        });
+
+        // Sticky Header Shrink Effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('shadow-md');
+            } else {
+                header.classList.remove('shadow-md');
+            }
+        });
+    </script>
+</body></html>

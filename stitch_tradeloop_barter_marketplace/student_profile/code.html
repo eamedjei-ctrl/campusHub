@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CampusMarket | Student Profile &amp; Signup</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "border-subtle": "#E5E7EB",
+                      "pending-amber": "#F59E0B",
+                      "on-tertiary-container": "#ffc6b2",
+                      "tertiary-fixed": "#ffdbcf",
+                      "secondary": "#994700",
+                      "inverse-surface": "#2e3038",
+                      "on-surface-variant": "#434654",
+                      "primary": "#003d9b",
+                      "surface-variant": "#e1e2ec",
+                      "inverse-on-surface": "#f0f0fb",
+                      "on-primary-fixed-variant": "#0040a2",
+                      "surface-container-lowest": "#ffffff",
+                      "on-background": "#191b23",
+                      "surface-bright": "#faf8ff",
+                      "inverse-primary": "#b2c5ff",
+                      "on-secondary-fixed": "#321200",
+                      "on-primary": "#ffffff",
+                      "education-orange": "#FF7A00",
+                      "on-error-container": "#93000a",
+                      "surface-container-high": "#e7e7f2",
+                      "on-tertiary-fixed": "#380d00",
+                      "on-secondary-container": "#592600",
+                      "tertiary-fixed-dim": "#ffb59b",
+                      "on-primary-container": "#c4d2ff",
+                      "campus-blue": "#0052CC",
+                      "surface": "#faf8ff",
+                      "tertiary-container": "#a33500",
+                      "error": "#ba1a1a",
+                      "primary-fixed": "#dae2ff",
+                      "on-secondary-fixed-variant": "#753400",
+                      "surface-tint": "#0c56d0",
+                      "error-container": "#ffdad6",
+                      "on-secondary": "#ffffff",
+                      "primary-fixed-dim": "#b2c5ff",
+                      "outline-variant": "#c3c6d6",
+                      "background": "#faf8ff",
+                      "secondary-container": "#fb7800",
+                      "error-red": "#EF4444",
+                      "tertiary": "#7b2600",
+                      "surface-dim": "#d9d9e4",
+                      "on-tertiary": "#ffffff",
+                      "outline": "#737685",
+                      "surface-container-low": "#f3f3fd",
+                      "surface-container-highest": "#e1e2ec",
+                      "on-tertiary-fixed-variant": "#812800",
+                      "success-green": "#22C55E",
+                      "on-primary-fixed": "#001848",
+                      "secondary-fixed": "#ffdbc8",
+                      "primary-container": "#0052cc",
+                      "surface-gray": "#F8F9FA",
+                      "on-error": "#ffffff",
+                      "on-surface": "#191b23",
+                      "surface-container": "#ededf8",
+                      "secondary-fixed-dim": "#ffb68b"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "stack-sm": "0.5rem",
+                      "container-max": "1280px",
+                      "gutter-md": "1.5rem",
+                      "gutter-sm": "0.75rem",
+                      "stack-md": "1rem",
+                      "stack-xs": "0.25rem",
+                      "grid-margin": "1rem"
+              },
+              "fontFamily": {
+                      "body-lg": ["Plus Jakarta Sans"],
+                      "title-md": ["Plus Jakarta Sans"],
+                      "headline-lg": ["Plus Jakarta Sans"],
+                      "headline-lg-mobile": ["Plus Jakarta Sans"],
+                      "display-lg": ["Plus Jakarta Sans"],
+                      "price-display": ["Plus Jakarta Sans"],
+                      "body-sm": ["Plus Jakarta Sans"],
+                      "label-md": ["Plus Jakarta Sans"]
+              },
+              "fontSize": {
+                      "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "title-md": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                      "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                      "headline-lg-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "700"}],
+                      "display-lg": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "price-display": ["20px", {"lineHeight": "24px", "fontWeight": "700"}],
+                      "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background font-body-sm text-on-background selection:bg-campus-blue selection:text-white">
+<header class="bg-surface sticky top-0 z-40 border-b border-border-subtle">
+<div class="flex justify-between items-center w-full px-grid-margin py-stack-sm max-w-container-max mx-auto">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-campus-blue">menu</span>
+<h1 class="text-headline-lg-mobile font-headline-lg-mobile text-campus-blue tracking-tight">CampusMarket</h1>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant">shopping_cart</span>
+</div>
+</div>
+</header>
+<main class="max-w-container-max mx-auto pb-24 md:pb-8">
+<div class="px-grid-margin py-stack-md" id="auth-screen">
+<div class="max-w-md mx-auto bg-surface-container-lowest border border-border-subtle rounded-xl p-8">
+<div class="text-center mb-8">
+<h2 class="font-headline-lg text-headline-lg text-campus-blue mb-2">Join Your Campus</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Sign up to trade, buy, and sell within your university community.</p>
+</div>
+<form class="space-y-6" onsubmit="event.preventDefault(); document.getElementById('auth-screen').classList.add('hidden'); document.getElementById('profile-view').classList.remove('hidden');">
+<div class="flex flex-col items-center mb-8">
+<div class="relative group">
+<div class="w-24 h-24 rounded-full bg-surface-container-high border-2 border-dashed border-outline-variant flex items-center justify-center overflow-hidden transition-all group-hover:border-campus-blue">
+<span class="material-symbols-outlined text-outline text-4xl group-hover:text-campus-blue">add_a_photo</span>
+</div>
+<input aria-label="Upload profile picture" class="absolute inset-0 opacity-0 cursor-pointer" type="file"/>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant mt-2">Profile Picture</span>
+</div>
+<div class="space-y-4">
+<div>
+<label class="font-label-md text-label-md text-on-surface-variant block mb-1">School Email</label>
+<input class="w-full px-4 py-2 bg-white border border-border-subtle rounded-lg focus:ring-2 focus:ring-campus-blue focus:border-campus-blue transition-all outline-none" placeholder="student@university.edu" required="" type="email"/>
+</div>
+<div>
+<label class="font-label-md text-label-md text-on-surface-variant block mb-1">Username</label>
+<input class="w-full px-4 py-2 bg-white border border-border-subtle rounded-lg focus:ring-2 focus:ring-campus-blue focus:border-campus-blue transition-all outline-none" placeholder="CampusTrader99" required="" type="text"/>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label class="font-label-md text-label-md text-on-surface-variant block mb-1">Department</label>
+<select class="w-full px-4 py-2 bg-white border border-border-subtle rounded-lg focus:ring-2 focus:ring-campus-blue focus:border-campus-blue transition-all outline-none">
+<option>Engineering</option>
+<option>Arts &amp; Design</option>
+<option>Business</option>
+<option>Sciences</option>
+</select>
+</div>
+<div>
+<label class="font-label-md text-label-md text-on-surface-variant block mb-1">Year of Study</label>
+<select class="w-full px-4 py-2 bg-white border border-border-subtle rounded-lg focus:ring-2 focus:ring-campus-blue focus:border-campus-blue transition-all outline-none">
+<option>Freshman</option>
+<option>Sophomore</option>
+<option>Junior</option>
+<option>Senior</option>
+<option>Postgrad</option>
+</select>
+</div>
+</div>
+</div>
+<button class="w-full bg-campus-blue text-white font-title-md text-title-md py-3 rounded-lg hover:opacity-90 active:scale-[0.98] transition-all mt-4" type="submit">
+                        Create Account
+                    </button>
+</form>
+</div>
+</div>
+<div class="hidden animate-in fade-in duration-500" id="profile-view">
+<div class="bg-white border-b border-border-subtle">
+<div class="px-grid-margin py-8 max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-8">
+<img alt="Alex Chen" class="w-32 h-32 rounded-full object-cover border-4 border-primary-fixed shadow-sm" data-alt="A professional yet friendly portrait of a male Asian university student smiling confidently in a modern, brightly lit campus hallway. The lighting is soft and natural, emphasizing a trustworthy and energetic character. The background shows a clean, out-of-focus academic setting with glass walls and minimalist architecture, maintaining a high-key light mode aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDwd7a0mnSp3xH8gLNKfI4wtpIv26GzKH6pebMSeRgLmpzNuaguR5zNcFPRBZbLrXeCtxyxKC_KSArBb00EwfPL7fVmuzj4v9Qe4jRebpWnwfgcJ0WnKlsFsio32eXUEbu-7hOvkZHnKe_1VZV6KcI1W1qL2Hv_H9E8VDlthqCsVlCHQ2W7ECt4BwIGncTqvocJRUxbIGEf4Hmdxf1d5FX6uP5w68e5UJ0Z_Mc4tAgBAh8909ucMFoZSBBLYzK1kM3tl1PSbdfLdx4"/>
+<div class="flex-1 text-center md:text-left">
+<div class="flex flex-col md:flex-row items-center gap-2 md:gap-4 mb-2">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Alex Chen</h2>
+<span class="bg-primary-fixed text-campus-blue px-3 py-0.5 rounded-full font-label-md text-label-md">Engineering • Senior</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4">Verified Student • Stanford University</p>
+<div class="flex flex-wrap justify-center md:justify-start gap-8">
+<div class="text-center md:text-left">
+<span class="block font-title-md text-title-md text-on-surface">12</span>
+<span class="text-label-md text-on-surface-variant">Active Listings</span>
+</div>
+<div class="text-center md:text-left">
+<div class="flex items-center justify-center md:justify-start gap-1">
+<span class="font-title-md text-title-md text-on-surface">4.9</span>
+<span class="material-symbols-outlined text-pending-amber text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<span class="text-label-md text-on-surface-variant">Seller Rating (48)</span>
+</div>
+<div class="text-center md:text-left">
+<span class="block font-title-md text-title-md text-on-surface">94%</span>
+<span class="text-label-md text-on-surface-variant">Response Rate</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-2 w-full md:w-auto">
+<button class="bg-campus-blue text-white px-6 py-2 rounded-lg font-title-md text-title-md hover:bg-primary-fixed-variant transition-colors">Edit Profile</button>
+<button class="border border-border-subtle text-on-surface px-6 py-2 rounded-lg font-title-md text-title-md hover:bg-surface-gray transition-colors">Share Profile</button>
+</div>
+</div>
+</div>
+<div class="px-grid-margin py-8">
+<div class="flex items-center justify-between mb-6">
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">Active Listings</h3>
+<div class="flex gap-2">
+<button class="bg-primary-fixed text-campus-blue px-4 py-1.5 rounded-full font-label-md text-label-md">Products</button>
+<button class="hover:bg-surface-container-high px-4 py-1.5 rounded-full font-label-md text-label-md text-on-surface-variant transition-colors">Services</button>
+</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-gutter-sm md:gap-gutter-md">
+<div class="bg-white border border-border-subtle rounded-xl overflow-hidden hover:shadow-lg transition-all group cursor-pointer">
+<div class="relative aspect-[4/3] overflow-hidden">
+<img alt="Mechanical Engineering Textbooks" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A stack of high-quality, professional engineering textbooks arranged neatly on a clean white desk. The lighting is bright and industrial, highlighting the textures of the book covers. The overall aesthetic is utilitarian and academic, with a shallow depth of field focusing on the titles. The color palette is composed of professional grays, deep blues, and crisp whites." src="https://lh3.googleusercontent.com/aida-public/AB6AXuABJbBmmHsIQVA0wZrhAzJq-umgcMSVUoU00RpMq6ElD-Qrw3BmMLPviV9Q9e-crrn8zIfW3fyTdUY7mX8Q9ORxr_hvifB-D-_JHheuf6WlN7tq3f6LwNjpi-39ICFsnSdSb7A8VBCUhQn5zeHeZGmtKOAhAezHbb7-KJ0WmQaPjk4xO7MYNfn95YQUYTZSpgF6FO_U-LZuQSbfNe5HUcUbu4MnVYAKNGcq2eVIoh55zyHPPF8AECKvhAQnqPY16TcIiifUPwVNlUxR"/>
+<span class="absolute top-2 left-2 bg-success-green text-white px-2 py-1 rounded text-[10px] font-bold uppercase">Like New</span>
+</div>
+<div class="p-3">
+<h4 class="font-title-md text-body-sm text-on-surface line-clamp-2 mb-1">Fundamentals of Thermodynamics - 9th Ed</h4>
+<div class="flex items-center justify-between">
+<span class="font-price-display text-price-display text-campus-blue">$45.00</span>
+<span class="material-symbols-outlined text-outline text-lg">swap_horiz</span>
+</div>
+<p class="text-[10px] text-on-surface-variant mt-2 flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">location_on</span> Campus Library
+                            </p>
+</div>
+</div>
+<div class="bg-white border border-border-subtle rounded-xl overflow-hidden hover:shadow-lg transition-all group cursor-pointer">
+<div class="relative aspect-[4/3] overflow-hidden">
+<img alt="MacBook Pro" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A sleek, silver MacBook Pro open on a minimalist wooden campus workspace. The lighting is warm and golden-hour soft, creating an inviting yet professional tech atmosphere. The surrounding environment is a clean, modern study area with high-end furniture. The aesthetic is focused on high-density information and clean utility." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkwZRy9BypXk5Vat8wnBzo62RbyXKO7O-S58AdSz3vmmqQU3Fyjn0VzBb0aPBfvIYujuM4PIOof_ODBdTrQlfe-PLw4L0Zny_hcWpb7RUGa0KCBW97eAymRGt_UmGsYKWVoWj_ttthe_kpkj4hlJLOYeawjAJ9Wr10E0vibYDbEVVUrkh2rxKC9eaP1WD4LAcOtaRXOAMVDS0Fmj4FWvHYvflzm1MI0zrk_MCxqtA9dLkkQfRy_W6LRNyaZ45D-My50pvc6-7Ky30p"/>
+<span class="absolute top-2 left-2 bg-pending-amber text-white px-2 py-1 rounded text-[10px] font-bold uppercase">Good</span>
+</div>
+<div class="p-3">
+<h4 class="font-title-md text-body-sm text-on-surface line-clamp-2 mb-1">MacBook Pro 14" (2021) M1 Pro, 16GB</h4>
+<div class="flex items-center justify-between">
+<span class="font-price-display text-price-display text-campus-blue">$850.00</span>
+<span class="material-symbols-outlined text-outline text-lg">payments</span>
+</div>
+<p class="text-[10px] text-on-surface-variant mt-2 flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">location_on</span> Engineering Quad
+                            </p>
+</div>
+</div>
+<div class="bg-white border border-border-subtle rounded-xl overflow-hidden hover:shadow-lg transition-all group cursor-pointer">
+<div class="relative aspect-[4/3] overflow-hidden">
+<img alt="Architecture Supplies" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A collection of professional architecture modeling tools including precision rulers, cutting mats, and balsa wood scraps on a bright white studio table. The lighting is crisp and overhead, casting sharp, organized shadows. The mood is highly creative yet meticulously organized, fitting a student marketplace vibe. Colors are predominantly neutral with pops of architectural yellow." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMr4l15AKxs6XTYBhemKAlJeiTxvjjcs5ujTNUARCy7JyhbgAh7reiwBQclqFbwW1E-Rnc4anmZVdYnYBqrMmvndhck3YyuMeXGvEakzfM58eTCee3c8SUyTbzICL-bYrBpHm1QpMwBq5WBW2VafALPn3s0_RxLTNdjAolFqq89QvywNTFb98qMhIasDs7T59ZL34fI3oFz1ffVh_QEblcySFhG_BZYRNX9aUWCGsMAv0oBZ62agTn8kyTTQsG_OzmBZc-2dg_yLHA"/>
+<span class="absolute top-2 left-2 bg-success-green text-white px-2 py-1 rounded text-[10px] font-bold uppercase">New</span>
+</div>
+<div class="p-3">
+<h4 class="font-title-md text-body-sm text-on-surface line-clamp-2 mb-1">Drafting Set &amp; Cutting Mat (Bundle)</h4>
+<div class="flex items-center justify-between">
+<span class="font-price-display text-price-display text-campus-blue">$25.00</span>
+<span class="material-symbols-outlined text-outline text-lg">swap_horiz</span>
+</div>
+<p class="text-[10px] text-on-surface-variant mt-2 flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">location_on</span> Architecture Bldg
+                            </p>
+</div>
+</div>
+<div class="bg-white border border-border-subtle rounded-xl overflow-hidden hover:shadow-lg transition-all group cursor-pointer border-dashed border-2 flex flex-col items-center justify-center p-6 text-on-surface-variant hover:text-campus-blue hover:border-campus-blue">
+<span class="material-symbols-outlined text-4xl mb-2">add_circle</span>
+<span class="font-title-md text-title-md text-center">Post New Listing</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center bg-surface border-t border-border-subtle px-gutter-sm py-2 shadow-lg md:hidden">
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:text-campus-blue transition-colors">
+<span class="material-symbols-outlined">home</span>
+<span class="text-label-md font-label-md">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:text-campus-blue transition-colors">
+<span class="material-symbols-outlined">storefront</span>
+<span class="text-label-md font-label-md">Services</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:text-campus-blue transition-colors">
+<span class="material-symbols-outlined">add_box</span>
+<span class="text-label-md font-label-md">Post</span>
+</div>
+<div class="flex flex-col items-center justify-center text-campus-blue bg-primary-fixed rounded-full px-4 py-1 transform scale-90">
+<span class="material-symbols-outlined">person</span>
+<span class="text-label-md font-label-md">Account</span>
+</div>
+</nav>
+<button class="fixed bottom-20 right-6 z-40 bg-campus-blue text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:scale-110 active:scale-95 transition-all md:bottom-8">
+<span class="material-symbols-outlined text-3xl">add</span>
+</button>
+</body></html>
