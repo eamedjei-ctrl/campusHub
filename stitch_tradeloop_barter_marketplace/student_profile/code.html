@@ -136,10 +136,46 @@
 <div class="px-grid-margin py-stack-md" id="auth-screen">
 <div class="max-w-md mx-auto bg-surface-container-lowest border border-border-subtle rounded-xl p-8">
 <div class="text-center mb-8">
-<h2 class="font-headline-lg text-headline-lg text-campus-blue mb-2">Join Your Campus</h2>
-<p class="font-body-sm text-body-sm text-on-surface-variant">Sign up to trade, buy, and sell within your university community.</p>
+<h2 id="auth-heading" class="font-headline-lg text-headline-lg text-campus-blue mb-2">Join Your Campus</h2>
+<p id="auth-description" class="font-body-sm text-body-sm text-on-surface-variant">Sign up to trade, buy, and sell within your university community.</p>
 </div>
-<form class="space-y-6" onsubmit="event.preventDefault(); document.getElementById('auth-screen').classList.add('hidden'); document.getElementById('profile-view').classList.remove('hidden');">
+<div class="mb-6 flex flex-wrap items-center justify-center gap-2">
+<button id="auth-login-toggle" type="button" class="rounded-full border border-campus-blue bg-campus-blue/10 px-5 py-2 text-sm font-semibold text-campus-blue transition hover:bg-campus-blue/20">Login</button>
+<button id="auth-signup-toggle" type="button" class="rounded-full border border-border-subtle bg-white px-5 py-2 text-sm font-semibold text-on-surface transition hover:bg-surface-container-high">Create Account</button>
+</div>
+<form id="login-form" class="space-y-4 hidden" onsubmit="event.preventDefault(); document.getElementById('auth-screen').classList.add('hidden'); document.getElementById('profile-view').classList.remove('hidden');">
+<div class="space-y-4">
+<div>
+<label class="font-label-md text-label-md text-on-surface-variant block mb-1">Email or Username</label>
+<input class="w-full px-4 py-2 bg-white border border-border-subtle rounded-lg focus:ring-2 focus:ring-campus-blue focus:border-campus-blue transition-all outline-none" placeholder="student@university.edu" required="" type="text"/>
+</div>
+<div>
+<label class="font-label-md text-label-md text-on-surface-variant block mb-1">Password</label>
+<input class="w-full px-4 py-2 bg-white border border-border-subtle rounded-lg focus:ring-2 focus:ring-campus-blue focus:border-campus-blue transition-all outline-none" placeholder="Enter your password" required="" type="password"/>
+</div>
+<div class="flex items-center justify-between text-sm text-on-surface-variant">
+<span class="inline-flex items-center gap-2">
+<input type="checkbox" class="h-4 w-4 rounded border-border-subtle text-campus-blue focus:ring-campus-blue" />
+Remember me
+</span>
+<a href="#" class="text-campus-blue hover:underline">Forgot Password?</a>
+</div>
+</div>
+<button class="w-full bg-campus-blue text-white font-title-md text-title-md py-3 rounded-lg hover:opacity-90 active:scale-[0.98] transition-all" type="submit">Login</button>
+<p class="text-center text-sm text-on-surface-variant">
+New here? <button type="button" id="switch-to-signup" class="text-campus-blue hover:underline">Create an account</button>
+</p>
+</form>
+<form id="signup-form" class="space-y-6" onsubmit="event.preventDefault(); document.getElementById('auth-screen').classList.add('hidden'); document.getElementById('profile-view').classList.remove('hidden');">
+<div id="account-type-selector" class="hidden space-y-4">
+<p class="text-sm text-on-surface-variant text-center">Choose the type of account you want to create.</p>
+<div class="grid gap-3 sm:grid-cols-2">
+<button id="buyer-account-button" type="button" class="rounded-full border border-border-subtle bg-white px-4 py-3 text-sm font-semibold text-on-surface transition hover:bg-surface-container-high">Buyer Account</button>
+<button id="seller-account-button" type="button" class="rounded-full border border-border-subtle bg-white px-4 py-3 text-sm font-semibold text-on-surface transition hover:bg-surface-container-high">Seller Account</button>
+</div>
+<p id="account-type-note" class="text-xs text-on-surface-variant text-center">Buyer account lets you shop, save items, and manage orders.</p>
+<input id="account-type-input" type="hidden" name="accountType" value="buyer" />
+</div>
 <div class="flex flex-col items-center mb-8">
 <div class="relative group">
 <div class="w-24 h-24 rounded-full bg-surface-container-high border-2 border-dashed border-outline-variant flex items-center justify-center overflow-hidden transition-all group-hover:border-campus-blue">
@@ -151,33 +187,16 @@
 </div>
 <div class="space-y-4">
 <div>
-<label class="font-label-md text-label-md text-on-surface-variant block mb-1">School Email</label>
+<label class="font-label-md text-label-md text-on-surface-variant block mb-1">EMAIL</label>
 <input class="w-full px-4 py-2 bg-white border border-border-subtle rounded-lg focus:ring-2 focus:ring-campus-blue focus:border-campus-blue transition-all outline-none" placeholder="student@university.edu" required="" type="email"/>
 </div>
 <div>
 <label class="font-label-md text-label-md text-on-surface-variant block mb-1">Username</label>
 <input class="w-full px-4 py-2 bg-white border border-border-subtle rounded-lg focus:ring-2 focus:ring-campus-blue focus:border-campus-blue transition-all outline-none" placeholder="CampusTrader99" required="" type="text"/>
 </div>
-<div class="grid grid-cols-2 gap-4">
 <div>
-<label class="font-label-md text-label-md text-on-surface-variant block mb-1">Department</label>
-<select class="w-full px-4 py-2 bg-white border border-border-subtle rounded-lg focus:ring-2 focus:ring-campus-blue focus:border-campus-blue transition-all outline-none">
-<option>Engineering</option>
-<option>Arts &amp; Design</option>
-<option>Business</option>
-<option>Sciences</option>
-</select>
-</div>
-<div>
-<label class="font-label-md text-label-md text-on-surface-variant block mb-1">Year of Study</label>
-<select class="w-full px-4 py-2 bg-white border border-border-subtle rounded-lg focus:ring-2 focus:ring-campus-blue focus:border-campus-blue transition-all outline-none">
-<option>Freshman</option>
-<option>Sophomore</option>
-<option>Junior</option>
-<option>Senior</option>
-<option>Postgrad</option>
-</select>
-</div>
+<label class="font-label-md text-label-md text-on-surface-variant block mb-1">Password</label>
+<input class="w-full px-4 py-2 bg-white border border-border-subtle rounded-lg focus:ring-2 focus:ring-campus-blue focus:border-campus-blue transition-all outline-none" placeholder="Enter your password" required="" type="password"/>
 </div>
 </div>
 <button class="w-full bg-campus-blue text-white font-title-md text-title-md py-3 rounded-lg hover:opacity-90 active:scale-[0.98] transition-all mt-4" type="submit">
@@ -193,12 +212,12 @@
 <div class="flex-1 text-center md:text-left">
 <div class="flex flex-col md:flex-row items-center gap-2 md:gap-4 mb-2">
 <h2 class="font-headline-lg text-headline-lg text-on-surface">Alex Chen</h2>
-<span class="bg-primary-fixed text-campus-blue px-3 py-0.5 rounded-full font-label-md text-label-md">Engineering • Senior</span>
+<span class="bg-primary-fixed text-campus-blue px-3 py-0.5 rounded-full font-label-md text-label-md">Senior • Verified Student</span>
 </div>
 <p class="font-body-sm text-body-sm text-on-surface-variant mb-4">Verified Student • Stanford University</p>
 <div class="flex flex-wrap justify-center md:justify-start gap-8">
 <div class="text-center md:text-left">
-<span class="block font-title-md text-title-md text-on-surface">12</span>
+<span id="active-listing-count" class="block font-title-md text-title-md text-on-surface">12</span>
 <span class="text-label-md text-on-surface-variant">Active Listings</span>
 </div>
 <div class="text-center md:text-left">
@@ -221,6 +240,85 @@
 </div>
 </div>
 <div class="px-grid-margin py-8">
+<div class="bg-surface-container-lowest border border-border-subtle rounded-xl p-6 md:p-8 shadow-sm">
+<div class="flex flex-col lg:flex-row lg:items-center gap-6">
+<div class="max-w-xl">
+<p class="font-label-md text-label-md text-secondary uppercase tracking-[0.18em]">Customer Service</p>
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mt-2">Need help with a trade, refund, or profile issue?</h3>
+<p class="text-body-sm text-on-surface-variant mt-3">Built with a Jumia-style support flow in mind: fast paths for the most common questions, a simple way to report a problem, and clear guidance when something needs attention.</p>
+</div>
+<div class="grid grid-cols-2 xl:grid-cols-4 gap-3 flex-1">
+<button class="rounded-xl border border-border-subtle bg-surface-gray p-4 text-left hover:border-campus-blue hover:shadow-sm transition-all">
+<span class="material-symbols-outlined text-campus-blue mb-3">support_agent</span>
+<p class="font-title-md text-title-md text-on-surface">Live Chat</p>
+<p class="text-label-md text-on-surface-variant mt-1">Talk to support now</p>
+</button>
+<button class="rounded-xl border border-border-subtle bg-surface-gray p-4 text-left hover:border-campus-blue hover:shadow-sm transition-all">
+<span class="material-symbols-outlined text-campus-blue mb-3">help_center</span>
+<p class="font-title-md text-title-md text-on-surface">Help Center</p>
+<p class="text-label-md text-on-surface-variant mt-1">Browse common answers</p>
+</button>
+<button class="rounded-xl border border-border-subtle bg-surface-gray p-4 text-left hover:border-campus-blue hover:shadow-sm transition-all">
+<span class="material-symbols-outlined text-campus-blue mb-3">report</span>
+<p class="font-title-md text-title-md text-on-surface">Report Issue</p>
+<p class="text-label-md text-on-surface-variant mt-1">Flag a trade problem</p>
+</button>
+<button class="rounded-xl border border-border-subtle bg-surface-gray p-4 text-left hover:border-campus-blue hover:shadow-sm transition-all">
+<span class="material-symbols-outlined text-campus-blue mb-3">verified_user</span>
+<p class="font-title-md text-title-md text-on-surface">Safety Tips</p>
+<p class="text-label-md text-on-surface-variant mt-1">Stay secure on campus</p>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-3 mt-6">
+<div class="rounded-lg bg-primary-fixed px-4 py-3">
+<p class="text-label-md text-campus-blue">Average reply time</p>
+<p class="font-title-md text-title-md text-on-surface mt-1">Under 15 minutes</p>
+</div>
+<div class="rounded-lg bg-primary-fixed px-4 py-3">
+<p class="text-label-md text-campus-blue">Open cases</p>
+<p class="font-title-md text-title-md text-on-surface mt-1">2 tracked today</p>
+</div>
+<div class="rounded-lg bg-primary-fixed px-4 py-3">
+<p class="text-label-md text-campus-blue">Support hours</p>
+<p class="font-title-md text-title-md text-on-surface mt-1">7 days a week</p>
+</div>
+</div>
+</div>
+<div class="mt-6 bg-surface-container-lowest border border-border-subtle rounded-xl p-6 md:p-8 shadow-sm">
+<div class="flex items-center justify-between gap-4 mb-5">
+<div>
+<p class="font-label-md text-label-md text-secondary uppercase tracking-[0.18em]">Social Media</p>
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mt-2">Follow CampusHub where you spend time online</h3>
+</div>
+<span class="hidden md:inline-flex items-center gap-2 rounded-full bg-primary-fixed px-3 py-1 text-label-md text-campus-blue">
+<span class="material-symbols-outlined text-base">share</span>
+Stay connected
+</span>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+<a class="rounded-xl border border-border-subtle bg-surface-gray p-4 hover:border-campus-blue hover:shadow-sm transition-all" href="#" aria-label="Follow CampusHub on Instagram">
+<span class="material-symbols-outlined text-campus-blue mb-3">photo_camera</span>
+<p class="font-title-md text-title-md text-on-surface">Instagram</p>
+<p class="text-label-md text-on-surface-variant mt-1">@campushub</p>
+</a>
+<a class="rounded-xl border border-border-subtle bg-surface-gray p-4 hover:border-campus-blue hover:shadow-sm transition-all" href="#" aria-label="Follow CampusHub on X">
+<span class="material-symbols-outlined text-campus-blue mb-3">chat</span>
+<p class="font-title-md text-title-md text-on-surface">X</p>
+<p class="text-label-md text-on-surface-variant mt-1">@campushub</p>
+</a>
+<a class="rounded-xl border border-border-subtle bg-surface-gray p-4 hover:border-campus-blue hover:shadow-sm transition-all" href="#" aria-label="Follow CampusHub on Facebook">
+<span class="material-symbols-outlined text-campus-blue mb-3">groups</span>
+<p class="font-title-md text-title-md text-on-surface">Facebook</p>
+<p class="text-label-md text-on-surface-variant mt-1">CampusHub Community</p>
+</a>
+<a class="rounded-xl border border-border-subtle bg-surface-gray p-4 hover:border-campus-blue hover:shadow-sm transition-all" href="#" aria-label="Follow CampusHub on TikTok">
+<span class="material-symbols-outlined text-campus-blue mb-3">movie</span>
+<p class="font-title-md text-title-md text-on-surface">TikTok</p>
+<p class="text-label-md text-on-surface-variant mt-1">@campushub</p>
+</a>
+</div>
+</div>
 <div class="flex items-center justify-between mb-6">
 <h3 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">Active Listings</h3>
 <div class="flex gap-2">
@@ -228,7 +326,7 @@
 <button class="hover:bg-surface-container-high px-4 py-1.5 rounded-full font-label-md text-label-md text-on-surface-variant transition-colors">Services</button>
 </div>
 </div>
-<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-gutter-sm md:gap-gutter-md">
+<div id="active-listings-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-gutter-sm md:gap-gutter-md">
 <div class="bg-white border border-border-subtle rounded-xl overflow-hidden hover:shadow-lg transition-all group cursor-pointer">
 <div class="relative aspect-[4/3] overflow-hidden">
 <img alt="Mechanical Engineering Textbooks" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A stack of high-quality, professional engineering textbooks arranged neatly on a clean white desk. The lighting is bright and industrial, highlighting the textures of the book covers. The overall aesthetic is utilitarian and academic, with a shallow depth of field focusing on the titles. The color palette is composed of professional grays, deep blues, and crisp whites." src="https://lh3.googleusercontent.com/aida-public/AB6AXuABJbBmmHsIQVA0wZrhAzJq-umgcMSVUoU00RpMq6ElD-Qrw3BmMLPviV9Q9e-crrn8zIfW3fyTdUY7mX8Q9ORxr_hvifB-D-_JHheuf6WlN7tq3f6LwNjpi-39ICFsnSdSb7A8VBCUhQn5zeHeZGmtKOAhAezHbb7-KJ0WmQaPjk4xO7MYNfn95YQUYTZSpgF6FO_U-LZuQSbfNe5HUcUbu4MnVYAKNGcq2eVIoh55zyHPPF8AECKvhAQnqPY16TcIiifUPwVNlUxR"/>
@@ -277,10 +375,10 @@
                             </p>
 </div>
 </div>
-<div class="bg-white border border-border-subtle rounded-xl overflow-hidden hover:shadow-lg transition-all group cursor-pointer border-dashed border-2 flex flex-col items-center justify-center p-6 text-on-surface-variant hover:text-campus-blue hover:border-campus-blue">
+<button id="new-listing-card" type="button" class="bg-white border border-border-subtle rounded-xl overflow-hidden hover:shadow-lg transition-all group cursor-pointer border-dashed border-2 flex flex-col items-center justify-center p-6 text-on-surface-variant hover:text-campus-blue hover:border-campus-blue">
 <span class="material-symbols-outlined text-4xl mb-2">add_circle</span>
 <span class="font-title-md text-title-md text-center">Post New Listing</span>
-</div>
+</button>
 </div>
 </div>
 </div>
@@ -303,7 +401,168 @@
 <span class="text-label-md font-label-md">Account</span>
 </div>
 </nav>
-<button class="fixed bottom-20 right-6 z-40 bg-campus-blue text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:scale-110 active:scale-95 transition-all md:bottom-8">
+<button id="open-listing-form-btn" type="button" class="fixed bottom-20 right-6 z-40 bg-campus-blue text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:scale-110 active:scale-95 transition-all md:bottom-8" aria-label="Post new listing">
 <span class="material-symbols-outlined text-3xl">add</span>
 </button>
+<div id="listing-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/40 p-4">
+<div class="w-full max-w-2xl rounded-3xl bg-white p-6 shadow-2xl">
+<div class="flex items-center justify-between gap-4 mb-6">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Post New Listing</h2>
+<button id="close-listing-modal" type="button" class="rounded-full border border-border-subtle p-2 text-on-surface hover:bg-surface-gray">Close</button>
+</div>
+<form id="listing-form" class="space-y-4">
+<div>
+<label class="font-label-md text-label-md text-on-surface-variant block mb-1">Product Title</label>
+<input id="listing-title" class="w-full px-4 py-3 bg-white border border-border-subtle rounded-lg focus:ring-2 focus:ring-campus-blue focus:border-campus-blue outline-none" placeholder="MacBook Pro 14&quot;" required type="text" />
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div>
+<label class="font-label-md text-label-md text-on-surface-variant block mb-1">Price</label>
+<input id="listing-price" class="w-full px-4 py-3 bg-white border border-border-subtle rounded-lg focus:ring-2 focus:ring-campus-blue focus:border-campus-blue outline-none" placeholder="$250" required type="text" />
+</div>
+<div>
+<label class="font-label-md text-label-md text-on-surface-variant block mb-1">Location</label>
+<input id="listing-location" class="w-full px-4 py-3 bg-white border border-border-subtle rounded-lg focus:ring-2 focus:ring-campus-blue focus:border-campus-blue outline-none" placeholder="Campus Library" required type="text" />
+</div>
+</div>
+<div>
+<label class="font-label-md text-label-md text-on-surface-variant block mb-1">Condition</label>
+<select id="listing-condition" class="w-full px-4 py-3 bg-white border border-border-subtle rounded-lg focus:ring-2 focus:ring-campus-blue focus:border-campus-blue outline-none">
+<option>New</option>
+<option>Like New</option>
+<option>Good</option>
+<option>Fair</option>
+</select>
+</div>
+<div>
+<label class="font-label-md text-label-md text-on-surface-variant block mb-1">Image URL</label>
+<input id="listing-image" class="w-full px-4 py-3 bg-white border border-border-subtle rounded-lg focus:ring-2 focus:ring-campus-blue focus:border-campus-blue outline-none" placeholder="https://example.com/image.jpg" type="url" />
+</div>
+<div class="flex flex-col sm:flex-row items-center gap-3 pt-2">
+<button class="w-full sm:w-auto bg-campus-blue text-white px-6 py-3 rounded-lg hover:opacity-90 transition-all" type="submit">Add Listing</button>
+<button id="cancel-listing" class="w-full sm:w-auto border border-border-subtle text-on-surface px-6 py-3 rounded-lg hover:bg-surface-gray transition-all" type="button">Cancel</button>
+</div>
+</form>
+</div>
+</div>
+<script>
+(function() {
+  const modal = document.getElementById('listing-modal');
+  const openBtn = document.getElementById('open-listing-form-btn');
+  const newListingCard = document.getElementById('new-listing-card');
+  const closeBtn = document.getElementById('close-listing-modal');
+  const cancelBtn = document.getElementById('cancel-listing');
+  const form = document.getElementById('listing-form');
+  const grid = document.getElementById('active-listings-grid');
+  const count = document.getElementById('active-listing-count');
+  const loginForm = document.getElementById('login-form');
+  const signupForm = document.getElementById('signup-form');
+  const authHeading = document.getElementById('auth-heading');
+  const authDescription = document.getElementById('auth-description');
+  const loginToggle = document.getElementById('auth-login-toggle');
+  const signupToggle = document.getElementById('auth-signup-toggle');
+  const switchToSignup = document.getElementById('switch-to-signup');
+  const accountTypeSelector = document.getElementById('account-type-selector');
+  const buyerAccountButton = document.getElementById('buyer-account-button');
+  const sellerAccountButton = document.getElementById('seller-account-button');
+  const accountTypeNote = document.getElementById('account-type-note');
+  const accountTypeInput = document.getElementById('account-type-input');
+
+  function showLogin() {
+    authHeading.textContent = 'Welcome Back';
+    authDescription.textContent = 'Sign in to access your trading dashboard.';
+    loginForm.classList.remove('hidden');
+    signupForm.classList.add('hidden');
+    accountTypeSelector.classList.add('hidden');
+    loginToggle.classList.add('bg-campus-blue/20');
+    signupToggle.classList.remove('bg-campus-blue/20');
+  }
+
+  function setAccountType(type) {
+    if (!accountTypeInput) return;
+    accountTypeInput.value = type;
+    if (type === 'seller') {
+      accountTypeNote.textContent = 'Seller account lets you list goods and manage your storefront.';
+      sellerAccountButton.classList.add('bg-campus-blue/10', 'border-campus-blue', 'text-campus-blue');
+      buyerAccountButton.classList.remove('bg-campus-blue/10', 'border-campus-blue', 'text-campus-blue');
+    } else {
+      accountTypeNote.textContent = 'Buyer account lets you browse, save items, and manage orders.';
+      buyerAccountButton.classList.add('bg-campus-blue/10', 'border-campus-blue', 'text-campus-blue');
+      sellerAccountButton.classList.remove('bg-campus-blue/10', 'border-campus-blue', 'text-campus-blue');
+    }
+  }
+
+  function showSignup() {
+    authHeading.textContent = 'Create an account';
+    authDescription.textContent = 'Choose buyer or seller to get started.';
+    loginForm.classList.add('hidden');
+    signupForm.classList.remove('hidden');
+    accountTypeSelector.classList.remove('hidden');
+    loginToggle.classList.remove('bg-campus-blue/20');
+    signupToggle.classList.add('bg-campus-blue/20');
+    setAccountType('buyer');
+  }
+
+  loginToggle.addEventListener('click', showLogin);
+  signupToggle.addEventListener('click', showSignup);
+  switchToSignup.addEventListener('click', showSignup);
+  buyerAccountButton.addEventListener('click', () => setAccountType('buyer'));
+  sellerAccountButton.addEventListener('click', () => setAccountType('seller'));
+
+  showSignup();
+
+  function showModal() {
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+  }
+
+  function hideModal() {
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+    form.reset();
+  }
+
+  openBtn.addEventListener('click', showModal);
+  newListingCard.addEventListener('click', showModal);
+  closeBtn.addEventListener('click', hideModal);
+  cancelBtn.addEventListener('click', hideModal);
+  modal.addEventListener('click', function(event) {
+    if (event.target === modal) hideModal();
+  });
+
+
+
+  form.addEventListener('submit', function(event) {
+    event.preventDefault();
+    const title = document.getElementById('listing-title').value.trim();
+    const price = document.getElementById('listing-price').value.trim();
+    const location = document.getElementById('listing-location').value.trim();
+    const condition = document.getElementById('listing-condition').value;
+    const image = document.getElementById('listing-image').value.trim() || 'https://lh3.googleusercontent.com/aida-public/AB6AXuABJbBmmHsIQVA0wZrhAzJq-umgcMSVUoU00RpMq6ElD-Qrw3BmMLPviV9Q9e-crrn8zIfW3fyTdUY7mX8Q9ORxr_hvifB-D-_JHheuf6WlN7tq3f6LwNjpi-39ICFsnSdSb7A8VBCUhQn5zeHeZGmtKOAhAezHbb7-KJ0WmQaPjk4xO7MYNfn95YQUYTZSpgF6FO_U-LZuQSbfNe5HUcUbu4MnVYAKNGcq2eVIoh55zyHPPF8AECKvhAQnqPY16TcIiifUPwVNlUxR';
+
+    const cardHtml = `
+      <div class="bg-white border border-border-subtle rounded-xl overflow-hidden hover:shadow-lg transition-all group cursor-pointer">
+        <div class="relative aspect-[4/3] overflow-hidden">
+          <img alt="${title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="${image}" />
+          <span class="absolute top-2 left-2 bg-success-green text-white px-2 py-1 rounded text-[10px] font-bold uppercase">${condition}</span>
+        </div>
+        <div class="p-3">
+          <h4 class="font-title-md text-body-sm text-on-surface line-clamp-2 mb-1">${title}</h4>
+          <div class="flex items-center justify-between">
+            <span class="font-price-display text-price-display text-campus-blue">${price}</span>
+            <span class="material-symbols-outlined text-outline text-lg">payments</span>
+          </div>
+          <p class="text-[10px] text-on-surface-variant mt-2 flex items-center gap-1">
+            <span class="material-symbols-outlined text-xs">location_on</span> ${location}
+          </p>
+        </div>
+      </div>
+    `;
+
+    newListingCard.insertAdjacentHTML('beforebegin', cardHtml);
+    count.textContent = String(Number(count.textContent || '0') + 1);
+    hideModal();
+  });
+})();
+</script>
 </body></html>

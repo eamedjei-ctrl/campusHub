@@ -1,0 +1,115 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id             String      @id @default(cuid())
+  firstName      String
+  lastName       String
+  username       String      @unique
+  email          String      @unique
+  phoneNumber    String?
+  password       String
+  role           Role        @default(BUYER)
+  createdAt      DateTime    @default(now())
+  updatedAt      DateTime    @updatedAt
+  buyerProfile   BuyerProfile?
+  orders         Order[]
+  wishlistItems  WishlistItem[]
+}
+
+model BuyerProfile {
+  id              String   @id @default(cuid())
+  user            User     @relation(fields: [userId], references: [id])
+  userId          String   @unique
+  country         String
+  region          String
+  city            String
+  address         String
+  profilePicture  String?
+}
+
+model Product {
+  id             String      @id @default(cuid())
+  title          String
+  brand          String
+  description    String
+  price          Float
+  discount       Float       @default(0)
+  rating         Float       @default(4.5)
+  reviewsCount   Int         @default(0)
+  sold           Int         @default(0)
+  stock          Int         @default(0)
+  deliveryTime   String      @default("2-5 days")
+  freeShipping   Boolean     @default(true)
+  verifiedSeller Boolean     @default(true)
+  category       String
+  subcategory    String
+  images         String[]
+  thumbnail      String?
+  status         ProductStatus @default(ACTIVE)
+  createdAt      DateTime    @default(now())
+  updatedAt      DateTime    @updatedAt
+}
+
+model Order {
+  id             String      @id @default(cuid())
+  user           User        @relation(fields: [userId], references: [id])
+  userId         String
+  orderNumber    String      @unique
+  totalAmount    Float
+  shippingCost   Float
+  taxAmount      Float
+  discountAmount Float
+  status         OrderStatus @default(PENDING)
+  placedAt       DateTime    @default(now())
+  deliveryDate   DateTime
+  shippingAddress String
+  items          OrderItem[]
+}
+
+model OrderItem {
+  id          String   @id @default(cuid())
+  order       Order    @relation(fields: [orderId], references: [id])
+  orderId     String
+  product     Product  @relation(fields: [productId], references: [id])
+  productId   String
+  quantity    Int
+  unitPrice   Float
+  subtotal    Float
+}
+
+model WishlistItem {
+  id        String   @id @default(cuid())
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String
+  product   Product  @relation(fields: [productId], references: [id])
+  productId String
+  addedAt   DateTime @default(now())
+}
+
+enum Role {
+  BUYER
+  SELLER
+  ADMIN
+}
+
+enum OrderStatus {
+  PENDING
+  CONFIRMED
+  SHIPPED
+  DELIVERED
+  CANCELLED
+  REFUNDED
+}
+
+enum ProductStatus {
+  ACTIVE
+  OUT_OF_STOCK
+  DISCONTINUED
+}

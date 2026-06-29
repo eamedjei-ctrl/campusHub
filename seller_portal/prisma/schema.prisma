@@ -1,0 +1,131 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                 String    @id @default(cuid())
+  email              String    @unique
+  password           String
+  role               Role      @default(SELLER)
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+  sellerProfile      SellerProfile?
+}
+
+model SellerProfile {
+  id                       String      @id @default(cuid())
+  user                     User        @relation(fields: [userId], references: [id])
+  userId                   String      @unique
+  businessName             String
+  ownerName                String
+  phoneNumber              String
+  businessAddress          String
+  country                  String
+  region                   String
+  city                     String
+  storeName                String
+  businessType             String
+  registrationNumber       String?
+  taxNumber                String?
+  storeLogo                String?
+  storeBanner              String?
+  rating                   Float       @default(0)
+  followers                Int         @default(0)
+  products                 Product[]
+  orders                   Order[]
+}
+
+model Product {
+  id                 String    @id @default(cuid())
+  seller             SellerProfile @relation(fields: [sellerId], references: [id])
+  sellerId           String
+  name               String
+  category           String
+  subcategory        String
+  brand              String
+  description        String
+  specifications     String
+  price              Float
+  discount           Float      @default(0)
+  stockQuantity      Int
+  sku                String     @unique
+  barcode            String?
+  weight             Float?
+  dimensions         String?
+  colors             String?
+  sizes              String?
+  warranty           String?
+  shippingCost       Float      @default(0)
+  deliveryTime       String?
+  tags               String?
+  condition          ProductCondition @default(NEW)
+  images             String[]
+  videoUrl           String?
+  thumbnail          String?
+  status             ProductStatus @default(PENDING_REVIEW)
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+  orderItems         OrderItem[]
+}
+
+model Order {
+  id                 String    @id @default(cuid())
+  seller             SellerProfile @relation(fields: [sellerId], references: [id])
+  sellerId           String
+  customerName       String
+  paymentStatus      PaymentStatus
+  deliveryStatus     DeliveryStatus
+  orderDate          DateTime @default(now())
+  shippingAddress    String
+  trackingNumber     String?
+  totalAmount        Float
+  items              OrderItem[]
+}
+
+model OrderItem {
+  id          String    @id @default(cuid())
+  order       Order     @relation(fields: [orderId], references: [id])
+  orderId     String
+  product     Product   @relation(fields: [productId], references: [id])
+  productId   String
+  quantity    Int
+  unitPrice   Float
+}
+
+enum Role {
+  SELLER
+  ADMIN
+}
+
+enum ProductStatus {
+  PENDING_REVIEW
+  APPROVED
+  REJECTED
+  HIDDEN
+  DRAFT
+}
+
+enum ProductCondition {
+  NEW
+  LIKE_NEW
+  GOOD
+  FAIR
+}
+
+enum PaymentStatus {
+  PAID
+  PENDING
+  REFUNDED
+}
+
+enum DeliveryStatus {
+  PROCESSING
+  SHIPPED
+  DELIVERED
+  CANCELLED
+}
