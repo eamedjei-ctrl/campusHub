@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusHub Loop | Chat & Trades</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .chat-bubble-enter {
+            animation: slideInUp 0.3s ease-out;
+        }
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .active-indicator {
+            width: 8px;
+            height: 8px;
+            background: #22C55E;
+            border-radius: 50%;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+        }
+    </style>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "border-subtle": "#E5E7EB",
+                        "pending-amber": "#F59E0B",
+                        "education-orange": "#FF7A00",
+                        "campus-blue": "#0052CC",
+                        "success-green": "#22C55E",
+                        "error-red": "#EF4444",
+                        "surface-gray": "#F8F9FA",
+                        "on-surface": "#191b23",
+                        "on-surface-variant": "#434654",
+                        "surface": "#faf8ff",
+                        "surface-container-lowest": "#ffffff",
+                        "background": "#faf8ff",
+                    },
+                    "spacing": {
+                        "stack-sm": "0.5rem",
+                        "stack-md": "1rem",
+                        "gutter-sm": "0.75rem",
+                        "gutter-md": "1.5rem",
+                        "grid-margin": "1rem",
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface h-screen flex flex-col">
+    <!-- Header -->
+    <header class="bg-surface border-b border-border-subtle sticky top-0 z-40">
+        <div class="flex justify-between items-center w-full px-grid-margin py-stack-sm max-w-7xl mx-auto">
+            <div class="flex items-center gap-4">
+                <button class="material-symbols-outlined text-campus-blue hover:bg-surface-gray p-2 rounded-full transition-colors" data-icon="menu">menu</button>
+                <h1 class="text-2xl font-bold text-campus-blue">CampusHub Loop</h1>
+            </div>
+            <div class="flex items-center gap-2">
+                <button class="material-symbols-outlined text-campus-blue hover:bg-surface-gray p-2 rounded-full transition-colors" data-icon="search">search</button>
+                <button class="material-symbols-outlined text-campus-blue hover:bg-surface-gray p-2 rounded-full transition-colors" data-icon="notifications">notifications</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="flex flex-1 overflow-hidden max-w-7xl w-full mx-auto">
+        <!-- Conversations Sidebar -->
+        <aside class="hidden md:flex md:w-80 border-r border-border-subtle bg-surface flex-col">
+            <!-- Search Conversations -->
+            <div class="p-4 border-b border-border-subtle">
+                <div class="relative">
+                    <input class="w-full bg-surface-gray border border-border-subtle rounded-lg py-2 pl-4 pr-10 text-sm focus:ring-2 focus:ring-campus-blue focus:outline-none" placeholder="Search conversations..." type="text">
+                    <span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm">search</span>
+                </div>
+            </div>
+
+            <!-- Conversations List -->
+            <div class="flex-1 overflow-y-auto hide-scrollbar">
+                <!-- Chat 1 -->
+                <div class="p-3 border-b border-border-subtle cursor-pointer hover:bg-surface-gray transition-colors group active-conversation">
+                    <div class="flex items-start gap-3">
+                        <div class="relative flex-shrink-0">
+                            <img class="w-12 h-12 rounded-full object-cover" alt="Tunde" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwVmkKpEvhFbbBrixa85BaoT-tCTW4ti7J6JJN8Ah_riLRzbgMWNRiz9xwe8fC1V_cvxPGRaGWiw92GxrvXcwmvbDRHSo1-i3oM9zt4heA1ZV9Iv6Zv5r8I5Z2kVTo2OSaUGzVvwZCRThe2OCNFk1PdwYPIi3NsqYkTx3fSOBNjjcVERZoSbFmbcK8gEMpVBhBnom2q2RsUvmZgVii06IAnHYd901q3YyKJdxfvzOrSXM9u-93j-nGCsLWgEGLTbJBWYsVk1aZHF7F">
+                            <div class="active-indicator"></div>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <p class="font-semibold text-sm text-on-surface">Tunde Adebayo</p>
+                            <p class="text-xs text-on-surface-variant truncate">Thanks! I'll pick up tomorrow</p>
+                            <p class="text-xs text-on-surface-variant mt-1">2 mins ago</p>
+                        </div>
+                        <span class="bg-campus-blue text-white text-xs rounded-full w-5 h-5 flex items-center justify-center flex-shrink-0">2</span>
+                    </div>
+                </div>
+
+                <!-- Chat 2 -->
+                <div class="p-3 border-b border-border-subtle cursor-pointer hover:bg-surface-gray transition-colors group">
+                    <div class="flex items-start gap-3">
+                        <div class="relative flex-shrink-0">
+                            <img class="w-12 h-12 rounded-full object-cover" alt="Chioma" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBViF9jbqC3Sc7WPKNrd9e9gLO5ycTkNM5qOinisiC9Q_mZfp4m8t4QWk8D6URMNkN8W6FPjkQwLRyEkSpTeIQcbCHnq3-Womzar2rlI5rdb9cB1yhIFQKxSfl4B5ytgOQsRJRRydX5vVHu52AgJNsSO4VZsOgyVEBB3Uqg6aFMaOQe111wKxHJ1OxubwcmeH4auOsLUuRvTbhY9uislhwS38LPspUxeuP_8ilQ0VCpxnn8WoIPYAjZWIHOiRdrRvq9760zNH98uUG4">
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <p class="font-semibold text-sm text-on-surface">Chioma Okonkwo</p>
+                            <p class="text-xs text-on-surface-variant truncate">What's the condition of the MacBook?</p>
+                            <p class="text-xs text-on-surface-variant mt-1">1 hour ago</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chat 3 -->
+                <div class="p-3 border-b border-border-subtle cursor-pointer hover:bg-surface-gray transition-colors group">
+                    <div class="flex items-start gap-3">
+                        <div class="relative flex-shrink-0">
+                            <img class="w-12 h-12 rounded-full object-cover" alt="Amara" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBluZAWytx3H6J52ZvrkY5e40gGg_DxDs4CFxBCLV84fdF6jropVXJsqQTOnF-ZaXT5WoO-pOyrLu3i7_6GZOeMKQD392ppNKU53mHciX-tq-w3VabG8e6SvN8mv8cYftK3wdTxskdMRNKLOl4HFP7HTSdc9ZWQhWmlB_2Ps2dRiemHl74jrah9vZqJN15VHq6wbjBHgNaLoiDrwj9pU14RiRCX3Qx1rQ7QOZCH8RKoDrCyXoHtGOXErfWcDuhD6UMqb3-_-sQ6s8Nt">
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <p class="font-semibold text-sm text-on-surface">Amara Williams</p>
+                            <p class="text-xs text-on-surface-variant truncate">Can we trade for the textbook instead?</p>
+                            <p class="text-xs text-on-surface-variant mt-1">3 hours ago</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chat 4 -->
+                <div class="p-3 cursor-pointer hover:bg-surface-gray transition-colors group">
+                    <div class="flex items-start gap-3">
+                        <div class="relative flex-shrink-0">
+                            <img class="w-12 h-12 rounded-full object-cover" alt="David" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwd7a0mnSp3xH8gLNKfI4wtpIv26GzKH6pebMSeRgLmpzNuaguR5zNcFPRBZbLrXeCtxyxKC_KSArBb00EwfPL7fVmuzj4v9Qe4jRebpWnwfgcJ0WnKlsFsio32eXUEbu-7hOvkZHnKe_1VZV6KcI1W1qL2Hv_H9E8VDlthqCsVlCHQ2W7ECt4BwIGncTqvocJRUxbIGEf4Hmdxf1d5FX6uP5w68e5UJ0Z_Mc4tAgBAh8909ucMFoZSBBLYzK1kM3tl1PSbdfLdx4">
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <p class="font-semibold text-sm text-on-surface">David Okafor</p>
+                            <p class="text-xs text-on-surface-variant truncate">Sure! When can we meet?</p>
+                            <p class="text-xs text-on-surface-variant mt-1">Yesterday</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- New Chat Button -->
+            <div class="p-4 border-t border-border-subtle">
+                <button class="w-full bg-campus-blue text-white py-2 rounded-lg font-semibold text-sm flex items-center justify-center gap-2 hover:bg-opacity-90 transition-all">
+                    <span class="material-symbols-outlined text-sm">add</span>
+                    New Chat
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Chat Area -->
+        <main class="flex-1 flex flex-col bg-surface-container-lowest">
+            <!-- Chat Header -->
+            <div class="bg-surface border-b border-border-subtle p-4 flex items-center justify-between sticky top-0 z-30">
+                <div class="flex items-center gap-3">
+                    <div class="relative">
+                        <img class="w-10 h-10 rounded-full object-cover" alt="Tunde" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwVmkKpEvhFbbBrixa85BaoT-tCTW4ti7J6JJN8Ah_riLRzbgMWNRiz9xwe8fC1V_cvxPGRaGWiw92GxrvXcwmvbDRHSo1-i3oM9zt4heA1ZV9Iv6Zv5r8I5Z2kVTo2OSaUGzVvwZCRThe2OCNFk1PdwYPIi3NsqYkTx3fSOBNjjcVERZoSbFmbcK8gEMpVBhBnom2q2RsUvmZgVii06IAnHYd901q3YyKJdxfvzOrSXM9u-93j-nGCsLWgEGLTbJBWYsVk1aZHF7F">
+                        <div class="active-indicator"></div>
+                    </div>
+                    <div>
+                        <p class="font-semibold text-sm">Tunde Adebayo</p>
+                        <p class="text-xs text-on-surface-variant">Active now</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2">
+                    <button class="material-symbols-outlined text-campus-blue hover:bg-surface-gray p-2 rounded-full transition-colors">call</button>
+                    <button class="material-symbols-outlined text-campus-blue hover:bg-surface-gray p-2 rounded-full transition-colors">video_call</button>
+                    <button class="material-symbols-outlined text-on-surface-variant hover:bg-surface-gray p-2 rounded-full transition-colors">more_vert</button>
+                </div>
+            </div>
+
+            <!-- Messages -->
+            <div class="flex-1 overflow-y-auto p-4 space-y-4 hide-scrollbar" id="messagesContainer">
+                <!-- Recipient Message -->
+                <div class="flex gap-3 items-end">
+                    <img class="w-8 h-8 rounded-full object-cover" alt="Tunde" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwVmkKpEvhFbbBrixa85BaoT-tCTW4ti7J6JJN8Ah_riLRzbgMWNRiz9xwe8fC1V_cvxPGRaGWiw92GxrvXcwmvbDRHSo1-i3oM9zt4heA1ZV9Iv6Zv5r8I5Z2kVTo2OSaUGzVvwZCRThe2OCNFk1PdwYPIi3NsqYkTx3fSOBNjjcVERZoSbFmbcK8gEMpVBhBnom2q2RsUvmZgVii06IAnHYd901q3YyKJdxfvzOrSXM9u-93j-nGCsLWgEGLTbJBWYsVk1aZHF7F">
+                    <div class="chat-bubble-enter max-w-xs bg-surface-gray rounded-2xl rounded-bl-none p-3">
+                        <p class="text-sm text-on-surface">Hey! Is the jollof still available?</p>
+                        <p class="text-xs text-on-surface-variant mt-1">10:30 AM</p>
+                    </div>
+                </div>
+
+                <!-- Sender Message -->
+                <div class="flex gap-3 items-end justify-end">
+                    <div class="chat-bubble-enter max-w-xs bg-campus-blue text-white rounded-2xl rounded-br-none p-3">
+                        <p class="text-sm">Yes! Just made fresh this morning</p>
+                        <p class="text-xs text-blue-100 mt-1">10:32 AM</p>
+                    </div>
+                </div>
+
+                <!-- Recipient Message with Image -->
+                <div class="flex gap-3 items-end">
+                    <img class="w-8 h-8 rounded-full object-cover" alt="Tunde" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwVmkKpEvhFbbBrixa85BaoT-tCTW4ti7J6JJN8Ah_riLRzbgMWNRiz9xwe8fC1V_cvxPGRaGWiw92GxrvXcwmvbDRHSo1-i3oM9zt4heA1ZV9Iv6Zv5r8I5Z2kVTo2OSaUGzVvwZCRThe2OCNFk1PdwYPIi3NsqYkTx3fSOBNjjcVERZoSbFmbcK8gEMpVBhBnom2q2RsUvmZgVii06IAnHYd901q3YyKJdxfvzOrSXM9u-93j-nGCsLWgEGLTbJBWYsVk1aZHF7F">
+                    <div class="chat-bubble-enter max-w-xs bg-surface-gray rounded-2xl rounded-bl-none p-3 space-y-2">
+                        <img class="w-full rounded-lg" alt="Jollof Rice" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDk05rBy6m-wy_T2St5gxBwC6t1QXPPYnRM5rprqcRdtSKTSzNoAKV2rQBpQk9HYPt7pmNkSKzPWOyjYQL9ZtJQ7xdpdfYdwEubm2y0GN9pNQBgVU5YmCYfWfLsp0nBs1p88sUQbWFxQt5d8iidZBXq8W-2vQKN8FKRu0sHO7K8ugiRF-N46LryA31FQ1VE5kxGj-OFPr-MCojmdSTVN8TRCCPEQ_hhg1G2-a2S3-EoPm-2PlOelNJ-usJ51iSId3eyA-mP5xjkFQY9">
+                        <p class="text-sm text-on-surface">How much?</p>
+                        <p class="text-xs text-on-surface-variant">10:35 AM</p>
+                    </div>
+                </div>
+
+                <!-- Sender Message -->
+                <div class="flex gap-3 items-end justify-end">
+                    <div class="chat-bubble-enter max-w-xs bg-campus-blue text-white rounded-2xl rounded-br-none p-3">
+                        <p class="text-sm">₦2,500 for one plate with chicken and plantains</p>
+                        <p class="text-xs text-blue-100 mt-1">10:36 AM</p>
+                    </div>
+                </div>
+
+                <!-- Recipient Message -->
+                <div class="flex gap-3 items-end">
+                    <img class="w-8 h-8 rounded-full object-cover" alt="Tunde" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwVmkKpEvhFbbBrixa85BaoT-tCTW4ti7J6JJN8Ah_riLRzbgMWNRiz9xwe8fC1V_cvxPGRaGWiw92GxrvXcwmvbDRHSo1-i3oM9zt4heA1ZV9Iv6Zv5r8I5Z2kVTo2OSaUGzVvwZCRThe2OCNFk1PdwYPIi3NsqYkTx3fSOBNjjcVERZoSbFmbcK8gEMpVBhBnom2q2RsUvmZgVii06IAnHYd901q3YyKJdxfvzOrSXM9u-93j-nGCsLWgEGLTbJBWYsVk1aZHF7F">
+                    <div class="chat-bubble-enter max-w-xs bg-surface-gray rounded-2xl rounded-bl-none p-3">
+                        <p class="text-sm text-on-surface">Thanks! I'll pick up tomorrow</p>
+                        <p class="text-xs text-on-surface-variant mt-1">10:37 AM</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Message Input -->
+            <div class="bg-surface border-t border-border-subtle p-4">
+                <div class="flex gap-3 items-end">
+                    <button class="material-symbols-outlined text-campus-blue hover:text-opacity-70 text-xl">add_circle</button>
+                    <input class="flex-1 bg-surface-gray border border-border-subtle rounded-2xl py-2 px-4 text-sm focus:ring-2 focus:ring-campus-blue focus:outline-none" placeholder="Type a message..." type="text" id="messageInput">
+                    <button class="material-symbols-outlined text-campus-blue hover:text-opacity-70 text-xl" onclick="sendMessage()">send</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Mobile Bottom Navigation -->
+    <nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center bg-surface border-t border-border-subtle px-gutter-sm py-2 shadow-lg">
+        <a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-campus-blue transition-colors" href="#">
+            <span class="material-symbols-outlined">home</span>
+            <span class="text-xs font-semibold">Home</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-campus-blue bg-surface-gray rounded-full px-4 py-1" href="#">
+            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">chat</span>
+            <span class="text-xs font-semibold">Loop</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-campus-blue transition-colors" href="#">
+            <span class="material-symbols-outlined">add_box</span>
+            <span class="text-xs font-semibold">Post</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-campus-blue transition-colors" href="#">
+            <span class="material-symbols-outlined">person</span>
+            <span class="text-xs font-semibold">Account</span>
+        </a>
+    </nav>
+
+    <script>
+        function sendMessage() {
+            const input = document.getElementById('messageInput');
+            const message = input.value.trim();
+            
+            if (!message) return;
+
+            const messagesContainer = document.getElementById('messagesContainer');
+            
+            // Create new message element
+            const messageEl = document.createElement('div');
+            messageEl.className = 'flex gap-3 items-end justify-end chat-bubble-enter';
+            messageEl.innerHTML = `
+                <div class="max-w-xs bg-campus-blue text-white rounded-2xl rounded-br-none p-3">
+                    <p class="text-sm">${escapeHtml(message)}</p>
+                    <p class="text-xs text-blue-100 mt-1">${new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</p>
+                </div>
+            `;
+            
+            messagesContainer.appendChild(messageEl);
+            
+            // Clear input
+            input.value = '';
+            
+            // Scroll to bottom
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            
+            // Simulate response after a delay
+            setTimeout(() => {
+                const responseEl = document.createElement('div');
+                responseEl.className = 'flex gap-3 items-end chat-bubble-enter';
+                responseEl.innerHTML = `
+                    <img class="w-8 h-8 rounded-full object-cover" alt="Tunde" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwVmkKpEvhFbbBrixa85BaoT-tCTW4ti7J6JJN8Ah_riLRzbgMWNRiz9xwe8fC1V_cvxPGRaGWiw92GxrvXcwmvbDRHSo1-i3oM9zt4heA1ZV9Iv6Zv5r8I5Z2kVTo2OSaUGzVvwZCRThe2OCNFk1PdwYPIi3NsqYkTx3fSOBNjjcVERZoSbFmbcK8gEMpVBhBnom2q2RsUvmZgVii06IAnHYd901q3YyKJdxfvzOrSXM9u-93j-nGCsLWgEGLTbJBWYsVk1aZHF7F">
+                    <div class="max-w-xs bg-surface-gray rounded-2xl rounded-bl-none p-3">
+                        <p class="text-sm text-on-surface">Got it! 👍</p>
+                        <p class="text-xs text-on-surface-variant mt-1">${new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</p>
+                    </div>
+                `;
+                messagesContainer.appendChild(responseEl);
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            }, 1500);
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // Enter key to send
+        document.getElementById('messageInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendMessage();
+            }
+        });
+
+        // Auto-scroll to bottom on load
+        document.getElementById('messagesContainer').scrollTop = document.getElementById('messagesContainer').scrollHeight;
+    </script>
+</body>
+</html>
